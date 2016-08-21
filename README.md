@@ -19,6 +19,10 @@ Palette is PHP Based Small Site Builder
 
 ## Installation
 
+Create Folder
+* thumbs/
+* sites/
+
 Give a Writable Permission on
 * config/
 * thumbs/
