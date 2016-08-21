@@ -34,6 +34,13 @@ class login{
 		if($login->isValidUser($user,$pass)){
 			$user = $login->getUserDetail();
 			$session->setSession($user);
+			$n = new notify();
+			$msg = array(
+				'caption' => "Login Info",
+				'content' => "Logined Successfully",
+				'type' => "success"
+			);
+			$n->setnotification($msg);
 		}
 	}
 	

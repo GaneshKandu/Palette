@@ -17,7 +17,7 @@ class tpl{ function tpl($tpl){ ?>
 <title><?= $tpl['title'] ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="css/palette.css" /> 
+	<link rel="stylesheet" href="css/palette.min.css" /> 
     <link href="css/metro.css" rel="stylesheet" />
     <link href="css/metro-icon.css" rel="stylesheet" />
     <script src="js/jquery.min.js"></script>
@@ -25,13 +25,39 @@ class tpl{ function tpl($tpl){ ?>
 	<script src="js/jscolor.js"></script>
 </head>
 <body>
-<div id="dialog-overlay"></div>
-<div id="dialog-box">
-	<div class="dialog-content">
-		<div id="dialog-message"></div>
-		<a href="#" class="button">Close</a>
-	</div>
+<ul class="v-menu" id="palatte_contex" ></ul>
+<div class="resizable ui-resizable" style="cursor: text; height: 248px; width: 346px; position: absolute; top: 46.5px; left: 567px; display: none;" contenteditable="false">
+	<div class="ui-resizable-handle ui-resizable-nw"></div>
+	<div class="ui-resizable-handle ui-resizable-ne"></div>
+	<div class="ui-resizable-handle ui-resizable-sw"></div>
+	<div class="ui-resizable-handle ui-resizable-se"></div>
+	<div class="ui-resizable-handle ui-resizable-n"></div>
+	<div class="ui-resizable-handle ui-resizable-s"></div>
+	<div class="ui-resizable-handle ui-resizable-e"></div>
+	<div class="ui-resizable-handle ui-resizable-w"></div>
 </div>
+	<div id="dialog-shadow" >
+		<div id="dialog-box">
+		<div style="width:390px;height:18px;border-bottom: thin solid #88b9e3;" >
+			<div class="app-bar-element place-right" >
+				<a href="javascript:void(0)" id="close_button" ><img src="images/close.png" style="width:16px;height:16px"/></a>
+			</div>
+		</div>
+		<div style="width:390px;" >
+			<div id="dialog-body">
+			</div>
+			<hr class="thin"/>
+		</div>
+		</div>
+	</div>
+	<div id="palette_popup" data-noselect="true" >
+		<div id="palette_popup_head">Heading</div>
+		<div id="palette_popup_Body"></div>
+		<div id="palette_popup_Buttons">
+			<button class="button" id="palette_popup_ok" >Ok</button>
+			<button class="button" id="palette_popup_cancel" >Cancel</button>
+		</div>
+	</div>
 <div id="tool-box">
 	<div id="pallate_title" ><span><b>Tool Box ( Palette )</b></span></div>
 	<div id="tools">
@@ -143,7 +169,88 @@ class tpl{ function tpl($tpl){ ?>
 			<div class="toolbar-section">
 				<a href="<?php echo $tpl['project']['dashurl']; ?>" ><button class="button">Dashboard</button></a>
 			</div>
+			<!--div class="toolbar-section">
+				<a href="javascript:void(0);" onclick="dialogbox('popup')" ><button class="button">test</button></a>
+			</div-->
+			<div class="toolbar-section">
+				<div class="dropdown-button">
+					<button class="button dropdown-toggle">Border</button>
+					<ul class="split-content d-menu" data-role="dropdown">
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="solid" checked>
+								<span class="check"></span>
+								<span class="caption">solid</span>
+							</label>
+						</li>
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="dotted" >
+								<span class="check"></span>
+								<span class="caption">dotted</span>
+							</label>
+						</li>
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="dashed" >
+								<span class="check"></span>
+								<span class="caption">dashed</span>
+							</label>
+						</li>
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="double" >
+								<span class="check"></span>
+								<span class="caption">double</span>
+							</label>
+						</li>
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="groove" >
+								<span class="check"></span>
+								<span class="caption">groove</span>
+							</label>
+						</li>
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="ridge" >
+								<span class="check"></span>
+								<span class="caption">ridge</span>
+							</label>
+						</li>
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="inset" >
+								<span class="check"></span>
+								<span class="caption">inset</span>
+							</label>
+						</li>
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="outset" >
+								<span class="check"></span>
+								<span class="caption">outset</span>
+							</label>
+						</li>
+						<li>
+							<label class="input-control radio small-check">
+								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="none" >
+								<span class="check"></span>
+								<span class="caption">none</span>
+							</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="toolbar-section" id="palatte_Slider"> 
+				<div class="slider" data-on-change="dropValueToInput" data-role="slider" data-max-value="50" data-min-value="0"></div>
+				<div class="input-control text">
+					<input id="slider_input" value="1">
+				</div>
+			</div>
 		</div>
+		<hr class="thin"/>
+		<span id="powerby" style="color: #000;line-height: 25px;margin-left:5px;" >Developed By <a href="mailto:kanduganesh@gmail.com" >Ganesh Kandu</a></span>
 	</div>
 	<table style="display:none">
 <tr>
@@ -317,20 +424,38 @@ class tpl{ function tpl($tpl){ ?>
 </table>
 	</div>
 </div>
-<?php
-$html = file_get_contents($tpl['project']['path']);
-preg_match('/<body>(.*?)<\/body>/is', $html, $body); 
-?>
-<div id="cont" contenteditable>
-<?php 
-if(isset($body[1])){
-	echo $body[1];
-}
-?>
+<div id="cont" contenteditable><?php 
+get_body_content($tpl['project']['path']);
+?></div>
 </div>
-</div>
+<script src="js/jquery-ui.js"></script>
 <script src="js/palette.js"></script>
+<script src="js/palettecms.js"></script>
+<script>
+/*
+var msgs = new Object();
+msgs.head = "My Heading";
+msgs.inputs = [
+	"what is your name",
+	"what is your fathers name"
+];
+echo.prompt(msgs).click(function(){
+	var output = palette_popup_values();
+	alert(output[0]+" "+output[1]);
+});
+
+msgs.head = "My Heading";
+msgs.inputs = [
+	"what is your name",
+	"what is your fathers name"
+];
+echo.prompt(msgs).click(function(){
+	var output = palette_popup_values();
+	alert(output[0]+" "+output[1]);
+});
+
+*/
+</script>
 </body>
 </html>
-<?php //print_r($tpl); ?>
 <?php } } ?>

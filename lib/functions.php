@@ -36,13 +36,18 @@ function make_project($project){
 	if ($zip->open(PATH.DS.'data'.DS.'data.zip') === TRUE) {
 		$zip->extractTo(PATH.DS.'sites'.DS.$project.DS);
 		$zip->close();
-		return true;
+		if(is_dir(PATH.DS.'sites'.DS.$project.DS)){
+			return true;
+		}else{
+			return false;
+		}
 	} else {
 		return false;
 	}
 }
 
 function html_page($body){
+
 return <<<HTML
 <!DOCTYPE html>
 <html>
@@ -75,6 +80,11 @@ function delete_project($dir) {
 			unlink($dir);	
 		}
 	}
+	if(is_dir($dir)){
+		return false;
+	}else{
+		return true;
+	}
 }
 
 function gen_random_string($length=16)
@@ -87,4 +97,42 @@ function gen_random_string($length=16)
  
     }
     return $final_rand;
+}
+
+function get_body_content($path){
+	$html = file_get_contents($path);
+	preg_match('/<body>(.*?)<\/body>/is', $html, $body);
+	$body = $body[1];
+	if(isset($body)){
+		echo $body;
+	}
+}
+
+function image_snap($file,$width = 64,$height = 48){
+	$filexport = explode(".",$file);
+	$ext = end($filexport);
+	$org_info = getimagesize($file);
+	switch($ext){
+		case 'jpg':
+			$rsr_org = imagecreatefromjpeg($file);
+		break;
+		case 'png':
+			$rsr_org = imagecreatefrompng($file);
+		break;
+		case 'gif':
+			$rsr_org = imagecreatefromgif($file);
+		break;
+		case 'bmp':
+			$rsr_org = imagecreatefromwbmp($file);	
+	}
+	$rsr_scl = imagescale($rsr_org, $width, $height,  IMG_BICUBIC_FIXED);
+	imagejpeg($rsr_scl, "thumbs".DS.md5_file($file));
+	imagedestroy($rsr_org);
+	imagedestroy($rsr_scl);
+}
+
+function isAjax()
+{
+    $header = isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? $_SERVER['HTTP_X_REQUESTED_WITH'] : null;
+    return ($header === 'XMLHttpRequest');
 }

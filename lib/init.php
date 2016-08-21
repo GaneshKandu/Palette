@@ -10,6 +10,7 @@ Contact Mail : kanduganesh@gmail.com
 
 session_start();
 $data = array();
+$start_time = microtime(true);
 require_once "lib/session.php";
 require_once '__pallete.php';
 if(file_exists("config/config.php")){
@@ -17,6 +18,7 @@ if(file_exists("config/config.php")){
 }
 require_once "lib/functions.php";
 require_once "lib/default.php";
+require_once "lib/notify.php";
 require_once "lib/ctrl.php";
 require_once "lib/user.php";
 if(isset($_GET['url'])){
@@ -133,5 +135,7 @@ if(isset($data['tpl'])){
 	/* throw 404 error */
 }
 require_once "lib/logs.php";
+$end_time = microtime(true);
+$data['time2respond'] = 'Script executed in '. round(($end_time - $start_time), 3) . 'seconds.';
 __pallete($data,1);
 ?>

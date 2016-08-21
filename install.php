@@ -147,7 +147,7 @@ fclose($INSTALL);
 	<button class="button info" id="install" style="font-size: 25px; line-height:0; color:#fff;" >Install</button>
 	<hr class="thin bg-grayLighter">
 </div>
-<script src="js/Palettecms.js"></script>
+<script src="js/palettecms.js"></script>
 	<script>
 		document.body.addEventListener('keydown', function(e) {
 			if(e.keyCode == 13){

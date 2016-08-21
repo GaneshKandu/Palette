@@ -22,7 +22,22 @@ class projects extends ctrl{
 			if($_POST['newproject'] == ""){
 				return true;
 			}
-			make_project($_POST['newproject']);
+			$n = new notify();
+			if(make_project($_POST['newproject'])){
+				$msg = array(
+					'caption' => "Project",
+					'content' => "Project Successfully Created",
+					'type' => "success"
+				);
+			}else{
+				$msg = array(
+					'caption' => "Project",
+					'content' => "Error Occured",
+					'type' => "Alert"
+				);
+				
+			}
+			$n->setnotification($msg);
 		}
 	}
 	
@@ -46,11 +61,40 @@ class projects extends ctrl{
 			$default = fopen($_POST['directory'].$file.'.html', "w");
 			fwrite($default, $indexcont);
 			fclose($default);
+			$n = new notify();
+			if(is_file($_POST['directory'].$file.'.html')){
+				$msg = array(
+					'caption' => "Project",
+					'content' => "Page Created Successfully",
+					'type' => "success"
+				);
+			}else{
+				$msg = array(
+					'caption' => "Project",
+					'content' => "Unable Create Page",
+					'type' => "warning"
+				);
+				
+			}
+			$n->setnotification($msg);
 		}
 		return $data;
 	}
 
 	function files($data){
+		$imgext = array("jpeg", "png", "gif", "bmp","jpg");
+		$path = $data['project']['path'];
+		if(isset($data['project']['files'])){
+			foreach($data['project']['files'] as $file){
+				$filext = explode(".",$file);
+				$filext = end($filext);
+				if(in_array($filext,$imgext)){
+					if(!file_exists('thumbs'.DS.md5_file($path.$file))){
+						image_snap($path.$file);
+					}
+				}
+			}
+		}
 		$data['tpl'] = "template";
 		$data['title'] = "Palette | ".$data['project']['project'];
 		$data['content'] = 'files';
@@ -64,7 +108,22 @@ class projects extends ctrl{
 			echo "fail";
 			return false;
 		}
-		delete_project(PATH.DS.'sites'.DS.$proj);
+		
+		$n = new notify();
+		if(delete_project(PATH.DS.'sites'.DS.$proj)){
+			$msg = array(
+				'caption' => "Project",
+				'content' => "Removed Successfully",
+				'type' => "success"
+			);
+		}else{
+			$msg = array(
+				'caption' => "Project",
+				'content' => "Error Occured",
+				'type' => "warning"
+			);
+		}
+		$n->setnotification($msg);
 		return $data;
 	}
 	
@@ -95,7 +154,17 @@ class projects extends ctrl{
 		}
 		$html = $_POST['html'];
 		$html = html_page($html);
-		$save = fopen($path.DS.$prosave['file'], "w");
+		$file = $path.DS.$prosave['file'];
+		if(!is_writable($file)){
+			echo 'unsuccess';
+			return false;
+		}else{
+			$save = @fopen($file, "w");
+			$info = stat($file);
+			if((time() - $info['mtime']) <= 5){
+				echo "success";
+			}
+		}
 		fwrite($save, $html);
 		fclose($save);
 	}

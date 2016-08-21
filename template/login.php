@@ -88,7 +88,7 @@ class tpl{ function tpl($tpl){
             <br />
             <div class="input-control text full-size" data-role="input">
                 <label for="user_login">User:</label>
-                <input type="text" name="user_login" id="user_login">
+                <input type="text" name="user_login" autofocus="autofocus" id="user_login">
                 <button class="button helper-button clear"><span class="mif-cross"></span></button>
             </div>
             <br />
