@@ -9,6 +9,8 @@ Contact Mail : kanduganesh@gmail.com
 */
 include "lib/logs.php";
 
+$prereq = false;
+
 if(file_exists("config".DIRECTORY_SEPARATOR ."INSTALL")){
 	header("Location:index.php");	
 }
@@ -129,7 +131,8 @@ fclose($INSTALL);
 	</style>
 </head>
 <body class="bg-darkTeal" >
-<div class="login-form padding20 block-shadow">
+<div class="login-form padding20 block-shadow" style="width:500px;margin-left:auto;margin-right:auto;margin-top: 50px;background-color: #666;">
+	<?php if(checkprereq()){ ?>
 	<h1 style="font-size: 40px; line-height: 1; color:#fff; " class="text-shadow metro-title text-light">Palette Install</h1>
 	<hr class="thin bg-grayLighter">
 	<h1 style="font-size: 25px; line-height: 1; color:#fff; " class="text-shadow metro-title text-light">Admin</h1>
@@ -146,14 +149,57 @@ fclose($INSTALL);
 	</div>
 	<button class="button info" id="install" style="font-size: 25px; line-height:0; color:#fff;" >Install</button>
 	<hr class="thin bg-grayLighter">
+	<?php } ?>
 </div>
+<script>
+	document.body.addEventListener('keydown', function(e) {
+		if(e.keyCode == 13){
+			install();
+		}
+	});
+</script>
 <script src="js/palettecms.js"></script>
-	<script>
-		document.body.addEventListener('keydown', function(e) {
-			if(e.keyCode == 13){
-				install();
-			}
-		});
-	</script>
 </body>
 </html>
+<?php 
+
+function checkprereq(){
+	$done = true;
+	$extensions = array(
+		"gd",
+		"zip"
+	);
+	
+	$files = array(
+		"logs" . DIRECTORY_SEPARATOR . "error.log",
+		"config",
+		"thumbs",
+		"sites",
+		".htaccess"
+	);
+
+	foreach($extensions as $extension){
+		if(!extension_loaded($extension)){
+			echo "<div class=\"grid\">
+					<div class=\"row\">
+						<div class=\"cell\" style=\"padding:10px;color:#FFF;background-color:#F00;font-size:20px\">Extension ".$extension." is Installed</div>
+					</div>
+				 </div>";
+				$done = false;
+		}
+	}
+	
+	foreach($files as $file){
+		if(!is_writable($file)){
+			echo "<div class=\"grid\">
+					<div class=\"row\">
+						<div class=\"cell\" style=\"padding:10px;color:#FFF;background-color:#F00;font-size:20px\">".$file." is Not Writable</div>
+					</div>
+				 </div>";
+				$done = false;
+		}
+	}
+	return $done;
+}
+
+?>

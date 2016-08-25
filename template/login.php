@@ -8,7 +8,7 @@ Contact Mail : kanduganesh@gmail.com
 ///////////////////////////////////////////////////
 */
 
-class tpl{ function tpl($tpl){
+class tpl{ function __construct($tpl){
 	$ses = new session();
 	if($ses->isValidSession()){
 		header('Location:'.URL.'/dashboard');

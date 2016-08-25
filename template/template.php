@@ -8,7 +8,7 @@ Contact Mail : kanduganesh@gmail.com
 ///////////////////////////////////////////////////
 */
 
-class tpl{ function tpl($tpl){ ?>
+class tpl{ function __construct($tpl){ ?>
 <?php include 'contents.php'; ?>
 <?php include $tpl['content'].'.php'; ?>
 <?php include 'contente.php'; ?>

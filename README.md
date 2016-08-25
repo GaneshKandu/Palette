@@ -10,7 +10,9 @@ Palette is PHP Based Small Site Builder
 
 ## Getting Started
 
-## Prerequisities
+## Prerequirement
+
+* PHP 5.3+
 
 ### Extension
 
@@ -19,15 +21,11 @@ Palette is PHP Based Small Site Builder
 
 ## Installation
 
-Create Folder
-* thumbs/
-* sites/
-
 Give a Writable Permission on
 * config/
 * thumbs/
 * sites/
-* log/error.log
+* logs/error.log
 * .htaccess
 
 and open install.php in you Browser

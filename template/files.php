@@ -52,7 +52,7 @@ if(isset($tpl['project']['files'])){
 			<tr>
 			<td><span class="mif-file-text"></span></td>
 			<td><?=$files; ?></td>
-			<td><img src="<?=$tpl['url'].'thumbs/'.md5_file($tpl['project']['path'].$files); ?>" width="100" /></td>
+			<td><img src="<?=$tpl['url'].'thumbs/'.md5_file($tpl['project']['path'].$files).".cache.jpeg"; ?>" width="100px" /></td>
 			<td><a href="javascript:void(0)" onclick="rmproject('<?=$tpl['project']['relatpath'].DS.DS.$files; ?>')" ><span class="mif-bin"></span></a></td>
 			</tr>
 			<?php	

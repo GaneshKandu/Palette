@@ -80,10 +80,14 @@ function delete_project($dir) {
 			unlink($dir);	
 		}
 	}
-	if(is_dir($dir)){
-		return false;
+	if(!is_dir($dir)){
+		if(!file_exists($dir)){
+			return true;
+		}else{
+			return false;
+		}
 	}else{
-		return true;
+		return false;
 	}
 }
 
@@ -108,31 +112,82 @@ function get_body_content($path){
 	}
 }
 
+function checkMemAvailableForResize($filename, $targetX, $targetY,$returnRequiredMem = false, $gdBloat = 1.68) {
+    $maxMem = ((int) ini_get('memory_limit') * 1024) * 1024;
+    $imageSizeInfo = getimagesize($filename);
+    $srcGDBytes = ceil((($imageSizeInfo[0] * $imageSizeInfo[1]) * 3) * $gdBloat);
+    $targetGDBytes = ceil((($targetX * $targetY) * 3) * $gdBloat);
+    $totalMemRequired = $srcGDBytes + $targetGDBytes + memory_get_usage();
+	if($totalMemRequired >= $maxMem){
+		$n = new notify();
+		$msg = array(
+			'caption' => "Memory",
+			'content' => "Memory Limit ".ceil(((($totalMemRequired)/1024)/1024))." MB Required",
+			'type' => "warning",
+			'keepOpen' => "true"
+		);
+		$n->setnotification($msg);
+	}
+    if ($returnRequiredMem) return $srcGDBytes + $targetGDBytes;
+    if ($totalMemRequired >= $maxMem) return false;
+    return true;
+}
+
 function image_snap($file,$width = 64,$height = 48){
 	$filexport = explode(".",$file);
 	$ext = end($filexport);
 	$org_info = getimagesize($file);
+	
+	if (!checkMemAvailableForResize($file, $width, $height)){	
+		return false;
+	}
+	
+	if(!extension_loaded("gd")){
+		$n = new notify();
+		$msg = array(
+			'caption' => "Extension",
+			'content' => "gd Extension Not Found",
+			'type' => "warning",
+			'keepOpen' => "true"
+		);
+		$n->setnotification($msg);
+		return false;
+	}
+	
 	switch($ext){
 		case 'jpg':
-			$rsr_org = imagecreatefromjpeg($file);
+			$rsr_org = @imagecreatefromjpeg($file);
 		break;
 		case 'png':
-			$rsr_org = imagecreatefrompng($file);
+			$rsr_org = @imagecreatefrompng($file);
 		break;
 		case 'gif':
-			$rsr_org = imagecreatefromgif($file);
+			$rsr_org = @imagecreatefromgif($file);
 		break;
 		case 'bmp':
-			$rsr_org = imagecreatefromwbmp($file);	
+			$rsr_org = @imagecreatefromwbmp($file);	
 	}
-	$rsr_scl = imagescale($rsr_org, $width, $height,  IMG_BICUBIC_FIXED);
-	imagejpeg($rsr_scl, "thumbs".DS.md5_file($file));
+	$thumb = imagecreatetruecolor($width, $height);
+	list($swidth, $sheight) = getimagesize($file);
+	imagecopyresized($thumb, $rsr_org, 0, 0, 0, 0, $width, $height, $swidth, $sheight);
 	imagedestroy($rsr_org);
-	imagedestroy($rsr_scl);
+	imagejpeg($thumb, "thumbs".DS.md5_file($file).".cache.jpeg");
 }
 
 function isAjax()
 {
     $header = isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? $_SERVER['HTTP_X_REQUESTED_WITH'] : null;
     return ($header === 'XMLHttpRequest');
+}
+
+function ListIn($dir, $prefix = '') {
+  $dir = rtrim($dir, '\\/');
+  $result = array();
+
+    foreach (scandir($dir) as $f) {
+      if ($f !== '.' and $f !== '..') {
+          $result[] = $dir.$prefix.$f;
+      }
+    }
+  return $result;
 }

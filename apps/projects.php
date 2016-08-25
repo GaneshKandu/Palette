@@ -112,14 +112,14 @@ class projects extends ctrl{
 		$n = new notify();
 		if(delete_project(PATH.DS.'sites'.DS.$proj)){
 			$msg = array(
-				'caption' => "Project",
+				'caption' => "",
 				'content' => "Removed Successfully",
 				'type' => "success"
 			);
 		}else{
 			$msg = array(
-				'caption' => "Project",
-				'content' => "Error Occured",
+				'caption' => "",
+				'content' => "Unable To Delete",
 				'type' => "warning"
 			);
 		}

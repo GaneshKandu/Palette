@@ -31,12 +31,10 @@ if(isset($_GET['url'])){
 		}else{
 			require_once "apps/dashboard.php";
 			$file = 'dashboard';
-			/* throw 404 error */
 		}
 	}else{
 		require_once "apps/dashboard.php";
 		$file = 'dashboard';
-		/* throw 404 error */
 	}
 }else{
 	require_once "apps/dashboard.php";
@@ -132,10 +130,10 @@ if(isset($data['tpl'])){
 }else{
 	require_once "apps/dashboard.php";
 	$file = 'dashboard';
-	/* throw 404 error */
 }
 require_once "lib/logs.php";
 $end_time = microtime(true);
 $data['time2respond'] = 'Script executed in '. round(($end_time - $start_time), 3) . 'seconds.';
 __pallete($data,1);
+
 ?>

@@ -21,22 +21,24 @@ class notify{
 			$msg = $_SESSION['Palette_notify'];
 			if(@unserialize($msg) == false){
 				return false;
+			}			
+			$msg = unserialize($msg);
+			echo "<script>";
+			echo "$.Notify({";
+			$flag = true;
+			foreach($msg as $key => $value){
+				if(!$flag){echo ",";}else{$flag = false;}
+				echo $key.":'".$value."'";
 			}
+			echo "});";
+			echo "</script>";
 		}else{
 			return false;
 		}
-		$msg = unserialize($msg);
-		echo "<script>";
-		echo "$.Notify({";
-		$flag = true;
-		foreach($msg as $key => $value){
-			if(!$flag){echo ",";}else{$flag = false;}
-			echo $key.":'".$value."'";
-		}
-		echo "});";
-		echo "</script>";
-		if(http_response_code() == 200){
-			$_SESSION['Palette_notify'] = null;
+		if(isset($_SERVER['REDIRECT_STATUS'])){
+			if($_SERVER['REDIRECT_STATUS'] == 200){
+				$_SESSION['Palette_notify'] = null;
+			}
 		}
 	}
 
