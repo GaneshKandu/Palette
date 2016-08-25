@@ -86,18 +86,18 @@ class tpl{ function __construct($tpl){ ?>
 						<li>
 							<table id="our_table" >
 							  <tr>
-								<td style="background-color:#ff5c33;" box="1" ></td>
-								<td style="background-color:#ff4d94;" box="2" ></td>
-								<td style="background-color:#6666ff;" box="3" ></td>
-								<td style="background-color:#00ffff;" box="4" ></td>
-								<td style="background-color:#ccffcc;" box="5" ></td>
-								<td style="background-color:#33ff88;" box="6" ></td>   
-								<td style="background-color:#ff5c88;" box="7" ></td>
-								<td style="background-color:#ff4d88;" box="8" ></td>
-								<td style="background-color:#666688;" box="9" ></td>
-								<td style="background-color:#00ff88;" box="10" ></td>
-								<td style="background-color:#ccff88;" box="11" ></td>
-								<td style="background-color:#33ff33;" box="12" ></td>    
+  							    <td style="background-color:#ff5c33;" box="1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#ff4d94;" box="2" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#6666ff;" box="3" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#00ffff;" box="4" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#ccffcc;" box="5" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#33ff88;" box="6" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>   
+								<td style="background-color:#ff5c88;" box="7" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#ff4d88;" box="8" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#666688;" box="9" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#00ff88;" box="10" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#ccff88;" box="11" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#33ff33;" box="12" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>   
 							  </tr>
 							  <tr>
 								  <td colspan="12">
