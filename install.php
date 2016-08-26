@@ -7,7 +7,7 @@ Developed By : Ganesh Kandu
 Contact Mail : kanduganesh@gmail.com
 ///////////////////////////////////////////////////
 */
-include "lib/logs.php";
+
 
 $prereq = false;
 
