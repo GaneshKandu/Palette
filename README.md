@@ -21,6 +21,11 @@ Palette is PHP Based Small Site Builder
 
 ## Installation
 
+Create Folder
+
+* thumbs/
+* sites/
+
 Give a Writable Permission on
 * config/
 * thumbs/
@@ -33,5 +38,5 @@ and open install.php in you Browser
 ## Authors
 
 * **Ganesh Kandu** [Ganesh Kandu](https://github.com/GaneshKandu)
-* **Contact** [kanduganeh@gmail.com](mailto:kanduganeh@gmail.com) :envelope:
+* **Contact** [kanduganesh@gmail.com](mailto:kanduganesh@gmail.com) :envelope:
 
