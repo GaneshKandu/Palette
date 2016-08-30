@@ -31,40 +31,43 @@ function nFURL(){
 }
 
 function make_project($project){
+	$return = false;
 	$zip = new ZipArchive();
 	//open the archive
 	if ($zip->open(PATH.DS.'data'.DS.'data.zip') === TRUE) {
-		$zip->extractTo(PATH.DS.'sites'.DS.$project.DS);
+		$zip->extractTo(PATH.DS.'sites'.DS.$project['project'].DS);
 		$zip->close();
-		if(is_dir(PATH.DS.'sites'.DS.$project.DS)){
-			return true;
+		if(is_dir(PATH.DS.'sites'.DS.$project['project'].DS)){
+			$return =  true;
 		}else{
-			return false;
+			$return =  false;
 		}
 	} else {
-		return false;
+		$return =  false;
 	}
+	
+	$indexcont = file_get_contents(PATH.DS.'sites'.DS.$project['project'].DS.'index.html');
+	
+	$meta = array(
+		'{{title}}' => tohtml($project['title']),
+		'{{robots}}' => tohtml($project['robots']),
+		'{{description}}' => tohtml($project['description']),
+		'{{keywords}}' => tohtml($project['keywords']),
+		'{{icon}}' => tohtml($project['icon']),
+		'{{baseurl}}' => ''
+	);
+			
+	$indexcont = strtr($indexcont ,$meta);
+	
+	$indexcont = file_put_contents(PATH.DS.'sites'.DS.$project['project'].DS.'index.html',$indexcont);
+	
+	return $return; 
 }
 
-function html_page($body){
-
-return <<<HTML
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-	<title>Palette</title>
-    <link href="css/metro.css" rel="stylesheet">
-    <link href="css/metro-icon.css" rel="stylesheet">
-    <link href="css/metro-responsive.css" rel="stylesheet">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.dataTables.min.js"></script>
-    <script src="js/metro.js"></script>
-	<script src="js/palette.js"></script>
-</head>
-<body>$body</body>
-</html>
-HTML;
+function html_page($body,$file){
+	$html = file_get_contents($file);
+	$old_body = get_body_content($file);
+	return str_replace($old_body,$body,$html);
 }
 
 function delete_project($dir) {
@@ -108,7 +111,7 @@ function get_body_content($path){
 	preg_match('/<body>(.*?)<\/body>/is', $html, $body);
 	$body = $body[1];
 	if(isset($body)){
-		echo $body;
+		return $body;
 	}
 }
 
@@ -133,7 +136,7 @@ function checkMemAvailableForResize($filename, $targetX, $targetY,$returnRequire
     return true;
 }
 
-function image_snap($file,$width = 64,$height = 48){
+function image_snap($file,$data,$width = 32,$height = 24){
 	$filexport = explode(".",$file);
 	$ext = end($filexport);
 	$org_info = getimagesize($file);
@@ -149,6 +152,17 @@ function image_snap($file,$width = 64,$height = 48){
 			'content' => "gd Extension Not Found",
 			'type' => "warning",
 			'keepOpen' => "true"
+		);
+		$n->setnotification($msg);
+		return false;
+	}
+	
+	if(!is_writable("thumbs")){
+		$n = new notify();
+		$msg = array(
+			'caption' => "Permission",
+			'content' => "thumbs is Not Writable",
+			'type' => "warning"
 		);
 		$n->setnotification($msg);
 		return false;
@@ -190,4 +204,39 @@ function ListIn($dir, $prefix = '') {
       }
     }
   return $result;
+}
+
+$images = array();
+
+function project_images($dir,$length){
+	global $images;
+	$imgext = array("jpeg", "png", "gif", "bmp","jpg");
+	if(is_dir($dir)){
+		$files = glob($dir.DS.'*');
+		foreach($files as $file){
+			project_images($file,$length);
+		}
+	}else{
+		if(file_exists($dir)){
+			$arr = explode('.',$dir);
+			$ext = end($arr);
+			if(in_array($ext,$imgext)){
+				$images['images'][md5_file($dir)] = substr($dir,$length,strlen($dir));
+			}
+		}
+	}
+	
+	if(isset($images['images'])){
+		return $images['images'];
+	}else{
+		return array();
+	}
+}
+
+function tohtml($txt){
+	$arr = array(
+		'<' => '&lt;',
+		'>' => '&gt;'
+	);
+	return strtr($txt,$arr);
 }

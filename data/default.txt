@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<base href="{{baseurl}}" />
+	<title>{{title}}</title>
+    <meta name="robots" content="{{robots}}" />
+    <meta name="description" content="{{description}}" />
+    <meta name="keywords" content="{{keywords}}" />
+    <meta name="author" content="Palette Site Builder" />
+    <link rel="favourites icon" href="{{icon}}" />
+    <link href="css/metro.css" rel="stylesheet">
+    <link href="css/metro-icon.css" rel="stylesheet">
+    <link href="css/metro-responsive.css" rel="stylesheet">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
+    <script src="js/metro.js"></script>
+</head>
+<body>
+<p align="center"><img src="images/palette.png" width="300" height="224"></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-weight: 200;">Palatte CMS is a PHP Based Content Management System.</p>
+</body>

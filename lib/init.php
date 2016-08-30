@@ -90,6 +90,8 @@ if(isset($urldata[0])){
 if(isset($urldata[0])){
 	if($urldata[0] == 'editor'){
 		$data['project']['path'] = PATH.DS.'sites'.DS;
+		$data['project']['sitepath'] = PATH.DS.'sites'.DS.$urldata[1];
+		$data['project']['siteurl'] = URL.'/sites/'.$urldata[1];
 		if(isset($urldata[1])){
 			$data['project']['name'] = $urldata[1];
 			$data['project']['path'] .= $data['project']['name'];

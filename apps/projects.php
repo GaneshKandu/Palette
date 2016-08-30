@@ -18,12 +18,20 @@ class projects extends ctrl{
 	}
 	
 	function createproject($data){
+		$project = array();
 		if(isset($_POST['newproject'])){
 			if($_POST['newproject'] == ""){
-				return true;
+				return false;
 			}
+			$project['project'] = $_POST['newproject'];
+			$project['title'] = isset($_POST['title'])?(trim($_POST['title'])):null;
+			$project['robots'] = isset($_POST['robots'])?(trim($_POST['robots'])):null;
+			$project['description'] = isset($_POST['description'])?(trim($_POST['description'])):null;
+			$project['keywords'] = isset($_POST['keywords'])?(trim($_POST['keywords'])):null;
+			$project['icon'] = isset($_POST['icon'])?(trim($_POST['icon'])):null;
+			
 			$n = new notify();
-			if(make_project($_POST['newproject'])){
+			if(make_project($project)){
 				$msg = array(
 					'caption' => "Project",
 					'content' => "Project Successfully Created",
@@ -41,17 +49,44 @@ class projects extends ctrl{
 		}
 	}
 	
+	function newfile($data){
+		$data['tpl'] = "template";
+		$data['title'] = "Palette | New File";
+		$data['content'] = 'newfile';
+		return $data;
+	}
+	
 	function createfile($data){
 		if(isset($_POST['file'])){
 			if($_POST['file'] == ""){
 				return true;
 			}
 			$file = trim($_POST['file']);
-			$index = fopen(PATH.DS.'template'.DS.'default.txt', "r");
-			$indexcont = "";
-			while(!feof($index)) { 
-				$indexcont .= fgets($index);
+			
+			$title = isset($_POST['title'])?(trim($_POST['title'])):null;
+			$robots = isset($_POST['robots'])?(trim($_POST['robots'])):null;
+			$description = isset($_POST['description'])?(trim($_POST['description'])):null;
+			$keywords = isset($_POST['keywords'])?(trim($_POST['keywords'])):null;
+			$icon = isset($_POST['icon'])?(trim($_POST['icon'])):null;
+			$baseurl = isset($_POST['baseurl'])?(trim($_POST['baseurl'])):0;
+			
+			for($i = 0;$i < $baseurl;$i++){
+				$base .= "../";
 			}
+			
+			$indexcont = file_get_contents(PATH.DS.'data'.DS.'default.txt');
+			
+			$meta = array(
+				'{{title}}' => tohtml($title),
+				'{{robots}}' => tohtml($robots),
+				'{{description}}' => tohtml($description),
+				'{{keywords}}' => tohtml($keywords),
+				'{{icon}}' => tohtml($icon),
+				'{{baseurl}}' => tohtml($base)
+			);
+			
+			$indexcont = strtr($indexcont ,$meta);
+			
 			$f = explode('/',$file);
 			$ds = "";
 			for($i = 0;$i < (count($f)-1);$i++ ){
@@ -89,8 +124,8 @@ class projects extends ctrl{
 				$filext = explode(".",$file);
 				$filext = end($filext);
 				if(in_array($filext,$imgext)){
-					if(!file_exists('thumbs'.DS.md5_file($path.$file))){
-						image_snap($path.$file);
+					if(!file_exists('thumbs'.DS.md5_file($path.$file).'.cache.jpeg')){
+						image_snap($path.$file,$data);
 					}
 				}
 			}
@@ -127,7 +162,7 @@ class projects extends ctrl{
 		return $data;
 	}
 	
-	function save(){
+	function save($data){
 		$path = '';
 		if(isset($_POST['project'])){
 			$prosave = unserialize(base64_decode(trim($_POST['project'])));
@@ -152,9 +187,10 @@ class projects extends ctrl{
 			}				
 			$path .= DS.$dir;
 		}
-		$html = $_POST['html'];
-		$html = html_page($html);
+		$body = $_POST['html'];
 		$file = $path.DS.$prosave['file'];
+		$body = html_page($body,$file);
+		
 		if(!is_writable($file)){
 			echo 'unsuccess';
 			return false;
@@ -165,7 +201,7 @@ class projects extends ctrl{
 				echo "success";
 			}
 		}
-		fwrite($save, $html);
+		fwrite($save, $body);
 		fclose($save);
 	}
 }

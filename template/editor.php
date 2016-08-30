@@ -13,16 +13,16 @@ class tpl{ function __construct($tpl){ ?>
 <html>
 <head>
 <meta charset="UTF-8" />
-<base href="<?= URL.'/'; ?>" />
+<base href="<?php echo $tpl['project']['siteurl'].'/'; ?>" />
 <title><?= $tpl['title'] ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="icon" href="/favicon.ico" type="image/x-icon" />
-	<link rel="stylesheet" href="css/palette.min.css" /> 
-    <link href="css/metro.css" rel="stylesheet" />
-    <link href="css/metro-icon.css" rel="stylesheet" />
-    <script src="js/jquery.min.js"></script>
-    <script src="js/metro.js"></script>
-	<script src="js/jscolor.js"></script>
+<link rel="icon" href="<?php echo URL.'/'; ?>favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="<?php echo URL.'/'; ?>css/palette.css" /> 
+    <link href="<?php echo URL.'/'; ?>css/metro.css" rel="stylesheet" />
+    <link href="<?php echo URL.'/'; ?>css/metro-icon.css" rel="stylesheet" />
+    <script src="<?php echo URL.'/'; ?>js/jquery.min.js"></script>
+    <script src="<?php echo URL.'/'; ?>js/metro.js"></script>
+	<script src="<?php echo URL.'/'; ?>js/jscolor.js"></script>
 </head>
 <body>
 <ul class="v-menu" id="palatte_contex" ></ul>
@@ -36,20 +36,6 @@ class tpl{ function __construct($tpl){ ?>
 	<div class="ui-resizable-handle ui-resizable-e"></div>
 	<div class="ui-resizable-handle ui-resizable-w"></div>
 </div>
-	<div id="dialog-shadow" >
-		<div id="dialog-box">
-		<div style="width:390px;height:18px;border-bottom: thin solid #88b9e3;" >
-			<div class="app-bar-element place-right" >
-				<a href="javascript:void(0)" id="close_button" ><img src="images/close.png" style="width:16px;height:16px"/></a>
-			</div>
-		</div>
-		<div style="width:390px;" >
-			<div id="dialog-body">
-			</div>
-			<hr class="thin"/>
-		</div>
-		</div>
-	</div>
 	<div id="palette_popup" data-noselect="true" >
 		<div id="palette_popup_head">Heading</div>
 		<div id="palette_popup_Body"></div>
@@ -86,7 +72,7 @@ class tpl{ function __construct($tpl){ ?>
 						<li>
 							<table id="our_table" >
 							  <tr>
-  							    <td style="background-color:#ff5c33;" box="1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								<td style="background-color:#ff5c33;" box="1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td style="background-color:#ff4d94;" box="2" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td style="background-color:#6666ff;" box="3" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td style="background-color:#00ffff;" box="4" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -97,7 +83,7 @@ class tpl{ function __construct($tpl){ ?>
 								<td style="background-color:#666688;" box="9" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td style="background-color:#00ff88;" box="10" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 								<td style="background-color:#ccff88;" box="11" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#33ff33;" box="12" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>   
+								<td style="background-color:#33ff33;" box="12" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
 							  </tr>
 							  <tr>
 								  <td colspan="12">
@@ -111,9 +97,9 @@ class tpl{ function __construct($tpl){ ?>
 			</div>
 			<div class="toolbar-section">
 				<button class="button" onclick="palatte_add_image_url();"><a href="javascript:void(0);"><span class="mif-image"></span></a></button>
+				<button class="button" onclick="display_images();"><a href="javascript:void(0);"><span class="mif-images"></span></a></button>
 				<button class="button" onclick="palatte_add_anchor();"><a href="javascript:void(0);"><span class="mif-link"></span></a></button>
 				<button class="button" onclick="palatte_add_table();"><a href="javascript:void(0);"><span class="mif-table"></span></a></button>
-				<!--button class="button" onclick="alert('remain');"><a href="javascript:void(0);"><span class="mif-file-upload"></span></a></button-->
 			</div>
 			<div class="toolbar-section">
 				<div class="dropdown-button">
@@ -159,7 +145,7 @@ class tpl{ function __construct($tpl){ ?>
 			<div class="toolbar-section">
 				<button class="button" onclick="palette_save('<?php 
 				if(isset($tpl['project'])){
-					echo base64_encode(serialize($tpl['project'])); 
+					echo base64_encode(serialize($tpl['project']))."','".URL; 
 				}
 				?>');"><a href="javascript:void(0);"><span class="mif-floppy-disk"></span></a></button>
 			</div>
@@ -169,9 +155,6 @@ class tpl{ function __construct($tpl){ ?>
 			<div class="toolbar-section">
 				<a href="<?php echo $tpl['project']['dashurl']; ?>" ><button class="button">Dashboard</button></a>
 			</div>
-			<!--div class="toolbar-section">
-				<a href="javascript:void(0);" onclick="dialogbox('popup')" ><button class="button">test</button></a>
-			</div-->
 			<div class="toolbar-section">
 				<div class="dropdown-button">
 					<button class="button dropdown-toggle">Border</button>
@@ -250,7 +233,7 @@ class tpl{ function __construct($tpl){ ?>
 			</div>
 		</div>
 		<hr class="thin"/>
-		<span id="powerby" style="color: #000;line-height: 25px;margin-left:5px;" >Powered By </span>
+		<span id="powerby" style="color: #000;line-height: 25px;margin-left:5px;" >Developed By <a href="mailto:kanduganesh@gmail.com" >Ganesh Kandu</a></span>
 	</div>
 	<table style="display:none">
 <tr>
@@ -422,15 +405,30 @@ class tpl{ function __construct($tpl){ ?>
 	<td><input type="radio" id="12_12"  name="12" value="12" checked></td>
 </tr>
 </table>
+</div>
+	<div id="img_exp" >
+		<?php 
+			$thumbs = project_images($tpl['project']['sitepath'],strlen($tpl['project']['sitepath'].DS));
+			$path = $tpl['project']['sitepath'].DS;
+			foreach($thumbs as $md5 => $file){
+				if(!file_exists('thumbs'.DS.md5_file($path.$file).'.cache.jpeg')){
+					image_snap($path.$file,$tpl);
+				}
+			}
+			foreach($thumbs as $md5 => $file){
+				$file = str_replace(DS,'//',$file);
+				echo "<div class=\"image\" ><a href=\"javascript:void(0)\" onclick=\"palatte_add_image('".$file."')\" ><img src=\"".$tpl['url']."thumbs/".$md5.".cache.jpeg\" /></a></div>\n";
+			}
+		?>
 	</div>
 </div>
 <div id="cont" contenteditable><?php 
-get_body_content($tpl['project']['path']);
+echo get_body_content($tpl['project']['path']);
 ?></div>
 </div>
-<script src="js/jquery-ui.js"></script>
-<script src="js/palette.js"></script>
-<script src="js/palettecms.js"></script>
+<script src="<?php echo URL.'/'; ?>js/jquery-ui.js"></script>
+<script src="<?php echo URL.'/'; ?>js/palette.js"></script>
+<script src="<?php echo URL.'/'; ?>js/palettecms.js"></script>
 <script>
 /*
 var msgs = new Object();

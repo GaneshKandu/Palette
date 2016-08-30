@@ -17,10 +17,11 @@ keepOpen
 
 class notify{
 	function get_notification(){
+		$result = true;
 		if(isset($_SESSION['Palette_notify'])){
 			$msg = $_SESSION['Palette_notify'];
 			if(@unserialize($msg) == false){
-				return false;
+				$result =  false;
 			}			
 			$msg = unserialize($msg);
 			echo "<script>";
@@ -33,13 +34,15 @@ class notify{
 			echo "});";
 			echo "</script>";
 		}else{
-			return false;
+			$result =  false;
 		}
 		if(isset($_SERVER['REDIRECT_STATUS'])){
 			if($_SERVER['REDIRECT_STATUS'] == 200){
 				$_SESSION['Palette_notify'] = null;
 			}
 		}
+		
+		return $result;
 	}
 
 	function setnotification($msg){

@@ -43,6 +43,10 @@
                 flex-basis: calc(100% - 52px);
             }
         }
+		#tbl_createfile{
+			font-size: 20px;
+			line-height: 25px;
+		}
     </style>
 </head>
 <body class="bg-steel" style="min-height: 100%" >

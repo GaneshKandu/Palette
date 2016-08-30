@@ -1,1 +1,0 @@
-debug=!1,$("#Login").click(function(){var o=$("#user_login").val(),l=$("#user_password").val(),n={user_login:o,user_password:l,action:"login"};$.ajax({url:"login/getLogin",type:"POST",data:n,success:function(o,l,n){debug||(console.log(o),console.log(l),location.reload())},error:function(o,l,n){debug||(console.log(data),console.log(l))}})});
