@@ -2,7 +2,11 @@
 [![GitHub Issues](https://img.shields.io/github/issues/GaneshKandu/Palette.svg)](https://github.com/GaneshKandu/Palette/issues) 
 [![Releases](https://img.shields.io/github/release/GaneshKandu/Palette.svg)](https://github.com/GaneshKandu/Palette/releases) 
 
+# Make Your Own Design
 
+<p align="center"><img width="200px"src="https://github.com/GaneshKandu/Palette/blob/master/images/Palette1.jpg"></p>
+<p align="center"><img width="200px"src="https://github.com/GaneshKandu/Palette/blob/master/images/Palette2.jpg"></p>
+<p align="center"><img width="200px"src="https://github.com/GaneshKandu/Palette/blob/master/images/Palette3.jpg"></p>
 
 # Palette
 
