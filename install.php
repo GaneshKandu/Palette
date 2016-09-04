@@ -68,6 +68,7 @@ define('DS', DIRECTORY_SEPARATOR);
 define('SECRET','$secret');
 define('URL','$Url');
 define('PATH', getcwd());
+define('VERSION', "1.0.0");
 \$admin = array(
 	'$admin'=> '$pass'
 );

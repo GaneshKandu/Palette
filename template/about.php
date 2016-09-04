@@ -2,7 +2,8 @@
 <hr class="thin bg-grayLighter"/>
 <table>
 <tr><td><h4>Developer   </h4></td><td>:   </td><td><h4>Ganesh Kandu</h4></td></tr>
-<tr><td><h4>Mail</h4></td><td>:</td><td><h4><a href="mailto:kanduganesh@gmail.com">kanduganesh@gmail.com</a></h4></td></tr>
+<tr><td><h4>Mail</h4></td><td>:</td><td><h4><a TARGET="_blank" href="mailto:kanduganesh@gmail.com">kanduganesh@gmail.com</a></h4></td></tr>
+<tr><td><h4>Issues</h4></td><td>:</td><td><h4><a TARGET="_blank" href="https://github.com/GaneshKandu/Palette/issues/new">Issues</a></h4></td></tr>
 <tr><td><h4>Developed By</h4></td><td>:</td><td><h4>Ganesh Kandu</h4></td></tr>
 </table>
 <hr class="thin bg-grayLighter"/>

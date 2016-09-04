@@ -12,10 +12,12 @@
     <link href="css/metro.css" rel="stylesheet">
     <link href="css/metro-icon.css" rel="stylesheet">
     <link href="css/metro-responsive.css" rel="stylesheet">
-    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="js/jquery.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/metro.js"></script>
+    <script src="js/palette.js"></script>
 </head>
 <body>
 <p align="center"><img src="images/palette.png" width="300" height="224"></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-weight: 200;">Palatte CMS is a PHP Based Content Management System.</p>
 </body>
+</html>

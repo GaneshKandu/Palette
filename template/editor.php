@@ -417,7 +417,7 @@ class tpl{ function __construct($tpl){ ?>
 			}
 			foreach($thumbs as $md5 => $file){
 				$file = str_replace(DS,'//',$file);
-				echo "<div class=\"image\" ><a href=\"javascript:void(0)\" onclick=\"palatte_add_image('".$file."')\" ><img src=\"".$tpl['url']."thumbs/".$md5.".cache.jpeg\" /></a></div>\n";
+				echo "<div class=\"image\" ><a href=\"javascript:void(0)\" onclick=\"setImage('".$file."');\" ><img src=\"".$tpl['url']."thumbs/".$md5.".cache.jpeg\" /></a></div>\n";
 			}
 		?>
 	</div>
