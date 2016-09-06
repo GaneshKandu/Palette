@@ -32,14 +32,10 @@ class notify{
 				echo $key.":'".$value."'";
 			}
 			echo "});";
+			echo "$.get(\"popup\",function(data, status){});";
 			echo "</script>";
 		}else{
 			$result =  false;
-		}
-		if(isset($_SERVER['REDIRECT_STATUS'])){
-			if($_SERVER['REDIRECT_STATUS'] == 200){
-				$_SESSION['Palette_notify'] = null;
-			}
 		}
 		
 		return $result;

@@ -19,9 +19,7 @@ class popup extends ctrl{
 	}
 	
 	function index($data){
-		?>
-		Ganesh Kandu
-		<?php 
+		$_SESSION['Palette_notify'] = null;
 		return $data;
 	}
 	
