@@ -40,12 +40,12 @@ class tpl{ function __construct($tpl){ ?>
 		<div id="palette_popup_head">Heading</div>
 		<div id="palette_popup_Body"></div>
 		<div id="palette_popup_Buttons">
-			<button class="button" id="palette_popup_ok" >Ok</button>
-			<button class="button" id="palette_popup_cancel" >Cancel</button>
+			<button class="button" id="palette_popup_ok" ><?php echo $tpl['lang']['ok']; ?></button>
+			<button class="button" id="palette_popup_cancel" ><?php echo $tpl['lang']['Cancel']; ?></button>
 		</div>
 	</div>
 <div id="tool-box">
-	<div id="pallate_title" ><span><b>Tool Box ( Palette )</b></span></div>
+	<div id="pallate_title" ><span><b><?php echo $tpl['lang']['tb']; ?> ( Palette )</b></span></div>
 	<div id="tools">
 	<div class="toolbar">
 		<div class="tool-menu" >
@@ -87,7 +87,7 @@ class tpl{ function __construct($tpl){ ?>
 							  </tr>
 							  <tr>
 								  <td colspan="12">
-										<button class="button" onclick="addrow();">Add Row</button>
+										<button class="button" onclick="addrow();"><?php echo $tpl['lang']['ar']; ?></button>
 								  </td>
 							  </tr>
 							</table>							
@@ -150,10 +150,10 @@ class tpl{ function __construct($tpl){ ?>
 				?>');"><a href="javascript:void(0);"><span class="mif-floppy-disk"></span></a></button>
 			</div>
 			<div class="toolbar-section">
-				<a href="<?php echo $tpl['project']['url']; ?>" target="_blank" ><button class="button">Preview</button></a>
+				<a href="<?php echo $tpl['project']['url']; ?>" target="_blank" ><button class="button"><?php echo $tpl['lang']['Preview']; ?></button></a>
 			</div>
 			<div class="toolbar-section">
-				<a href="<?php echo $tpl['project']['dashurl']; ?>" ><button class="button">Dashboard</button></a>
+				<a href="<?php echo $tpl['project']['dashurl']; ?>" ><button class="button"><?php echo $tpl['lang']['Dashboard']; ?></button></a>
 			</div>
 			<div class="toolbar-section">
 				<div class="dropdown-button">
@@ -233,7 +233,7 @@ class tpl{ function __construct($tpl){ ?>
 			</div>
 		</div>
 		<hr class="thin"/>
-		<span id="powerby" style="color: #000;line-height: 25px;margin-left:5px;" >Developed By <a href="mailto:kanduganesh@gmail.com" >Ganesh Kandu</a></span>
+		<span id="powerby" style="color: #000;line-height: 25px;margin-left:5px;" ><?php echo $tpl['lang']['Developed_By']; ?>  <a href="mailto:kanduganesh@gmail.com" >Ganesh Kandu</a></span>
 	</div>
 	<table style="display:none">
 <tr>

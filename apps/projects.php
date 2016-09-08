@@ -33,14 +33,14 @@ class projects extends ctrl{
 			$n = new notify();
 			if(make_project($project)){
 				$msg = array(
-					'caption' => "Project",
-					'content' => "Project Successfully Created",
+					'caption' => $data['lang']['Project'],
+					'content' => $data['lang']['pcs'],
 					'type' => "success"
 				);
 			}else{
 				$msg = array(
-					'caption' => "Project",
-					'content' => "Error Occured",
+					'caption' => $data['lang']['Project'],
+					'content' => $data['lang']['eo'],
 					'type' => "Alert"
 				);
 				

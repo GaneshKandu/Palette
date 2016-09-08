@@ -1,14 +1,14 @@
-                    <h1 class="text-light">Projects<span class="mif-palette place-right"></span></h1>
+                    <h1 class="text-light"><?php echo $tpl['lang']['Projects']; ?><span class="mif-palette place-right"></span></h1>
                     <hr class="thin bg-grayLighter"/>
-                    <a href="<?= URL; ?>/projects/newproject"><button class="button primary" onclick="pushMessage('info')"><span class="mif-plus"></span> Create New Site</button></a>
+                    <a href="<?= URL; ?>/projects/newproject"><button class="button primary" onclick="pushMessage('info')"><span class="mif-plus"></span><?php echo $tpl['lang']['cns']; ?></button></a>
                     <hr class="thin bg-grayLighter"/>
                     <table class="dataTable border bordered" data-auto-width="false">
                         <thead>
                         <tr>
-                            <td class="sortable-column">Sites</td>
-                            <td class="sortable-column">Open</td>
-                            <td class="sortable-column">Preview</td>
-                            <td class="sortable-column">Remove</td>
+                            <td class="sortable-column"><?php echo $tpl['lang']['Sites']; ?></td>
+                            <td class="sortable-column"><?php echo $tpl['lang']['Open']; ?></td>
+                            <td class="sortable-column"><?php echo $tpl['lang']['Preview']; ?></td>
+                            <td class="sortable-column"><?php echo $tpl['lang']['Remove']; ?></td>
                         </tr>
                         </thead>
                         <tbody>

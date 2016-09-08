@@ -21,6 +21,11 @@ require_once "lib/default.php";
 require_once "lib/notify.php";
 require_once "lib/ctrl.php";
 require_once "lib/user.php";
+ $dlang= include "lang/en.php";
+if(file_exists("lang/".LANG.".php")){
+	$lang = include "lang/".LANG.".php";
+}
+$data['lang'] = array_merge($dlang,$lang);
 if(isset($_GET['url'])){
 	$url = $_GET['url'];
 	$urldata = explode("/",$url);

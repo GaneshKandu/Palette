@@ -148,8 +148,8 @@ function image_snap($file,$data,$width = 32,$height = 24){
 	if(!extension_loaded("gd")){
 		$n = new notify();
 		$msg = array(
-			'caption' => "Extension",
-			'content' => "gd Extension Not Found",
+			'caption' => $data['lang']['ext'],
+			'content' => "gd ".$data['lang']['ext']." ".$data['lang']['nf'],
 			'type' => "warning",
 			'keepOpen' => "true"
 		);
@@ -160,8 +160,8 @@ function image_snap($file,$data,$width = 32,$height = 24){
 	if(!is_writable("thumbs")){
 		$n = new notify();
 		$msg = array(
-			'caption' => "Permission",
-			'content' => "thumbs is Not Writable",
+			'caption' => $data['lang']['Permission'],
+			'content' => $data['lang']['tnw'],
 			'type' => "warning"
 		);
 		$n->setnotification($msg);

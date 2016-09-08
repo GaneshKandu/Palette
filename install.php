@@ -69,6 +69,7 @@ define('SECRET','$secret');
 define('URL','$Url');
 define('PATH', getcwd());
 define('VERSION', "1.0.0");
+define('LANG', 'en');
 \$admin = array(
 	'$admin'=> '$pass'
 );

@@ -67,25 +67,25 @@ class tpl{ function __construct($tpl){
 </head>
 <body class="bg-darkTeal">
     <div class="login-form padding20 block-shadow">
-            <h1 class="text-light">Palette Login</h1>
+            <h1 class="text-light">Palette <?php echo $tpl['lang']['Login']; ?></h1>
             <hr class="thin"/>
             <br />
             <div class="input-control text full-size" data-role="input">
-                <label for="user_login">User:</label>
+                <label for="user_login"><?php echo $tpl['lang']['User']; ?>:</label>
                 <input type="text" name="user_login" autofocus="autofocus" id="user_login">
                 <button class="button helper-button clear"><span class="mif-cross"></span></button>
             </div>
             <br />
             <br />
             <div class="input-control password full-size" data-role="input">
-                <label for="user_password">password:</label>
+                <label for="user_password"><?php echo $tpl['lang']['password']; ?>:</label>
                 <input type="password" name="user_password" id="user_password">
                 <button class="button helper-button reveal"><span class="mif-looks"></span></button>
             </div>
             <br />
             <br />
             <div class="form-actions">
-                <button type="submit" class="button primary" id="Login">Login</button>
+                <button type="submit" class="button primary" id="Login"><?php echo $tpl['lang']['Login']; ?></button>
             </div>
             <hr class="thin"/>
 			<span id="powerby"></span>

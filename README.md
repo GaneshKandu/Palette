@@ -39,7 +39,7 @@ Give a Writable Permission on
 
 and open install.php in you Browser
 
-## Authors
+## Main Developers
 
 * **Ganesh Kandu** [Ganesh Kandu](https://github.com/GaneshKandu)
 * **Contact** [kanduganesh@gmail.com](mailto:kanduganesh@gmail.com) :envelope:

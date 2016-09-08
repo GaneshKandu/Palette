@@ -18,6 +18,6 @@
     <script src="js/palette.js"></script>
 </head>
 <body>
-<p align="center"><img src="images/palette.png" width="300" height="224"></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-weight: 200;">Palatte CMS is a PHP Based Content Management System.</p>
+<p align="center"><img src="images/palette.png" width="300" height="224"></p><p style="text-align: center; color: #7e7e7e; font-size: 15px; font-weight: 200;">Palatte CMS is a PHP Based Site Builder.</p>
 </body>
 </html>

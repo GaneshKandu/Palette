@@ -1,5 +1,13 @@
 <?php
 
+/*
+///////////////////////////////////////////////////
+Palatte is a PHP Based Site Builder
+Developed By : Ganesh Kandu
+Contact Mail : kanduganesh@gmail.com
+///////////////////////////////////////////////////
+*/
+
 class upload extends ctrl{
 	
 	function index($data){

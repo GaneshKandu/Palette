@@ -36,8 +36,8 @@ class login{
 			$session->setSession($user);
 			$n = new notify();
 			$msg = array(
-				'caption' => "Login Info",
-				'content' => "Logined Successfully",
+				'caption' => $data['lang']['Login'],
+				'content' => $data['lang']['ls'],
 				'type' => "success"
 			);
 			$n->setnotification($msg);

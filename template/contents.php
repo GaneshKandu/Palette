@@ -51,17 +51,17 @@
 </head>
 <body class="bg-steel" style="min-height: 100%" >
     <div class="app-bar fixed-top darcula" data-role="appbar">
-        <a class="app-bar-element branding" href="<?= URL.'/'; ?>" >Palette</a>
+        <a class="app-bar-element branding" href="<?= URL.'/'; ?>" ><?php echo $tpl['lang']['Palette']; ?></a>
         <span class="app-bar-divider"></span>
         <ul class="app-bar-menu">
-            <li><a href="<?= URL.'/dashboard'; ?>">Dashboard</a></li>
+            <li><a href="<?= URL.'/dashboard'; ?>"><?php echo $tpl['lang']['Dashboard']; ?></a></li>
             <li>
-                <a href="" class="dropdown-toggle">Project</a>
+                <a href="" class="dropdown-toggle"><?php echo $tpl['lang']['Project']; ?></a>
                 <ul class="d-menu" data-role="dropdown">
-                    <li><a href="<?= URL; ?>/projects/newproject">New project</a></li>
+                    <li><a href="<?= URL; ?>/projects/newproject"><?php echo $tpl['lang']['New']." ".$tpl['lang']['Project']; ?></a></li>
                     <li class="divider"></li>
                     <li>
-                        <a href="" class="dropdown-toggle">Open</a>
+                        <a href="" class="dropdown-toggle"><?php echo $tpl['lang']['Open']; ?></a>
                         <ul class="d-menu" data-role="dropdown">
 						<?php 
 							foreach($tpl['projects'] as $project){
@@ -73,9 +73,9 @@
                 </ul>
             </li>
             <li>
-                <a href="" class="dropdown-toggle">Help</a>
+                <a href="" class="dropdown-toggle"><?php echo $tpl['lang']['Help']; ?></a>
                 <ul class="d-menu" data-role="dropdown">
-                    <li><a href="<?= URL.'/'; ?>dashboard/about">About</a></li>
+                    <li><a href="<?= URL.'/'; ?>dashboard/about"><?php echo $tpl['lang']['About']; ?></a></li>
                 </ul>
             </li>
 			<?php __palatte_menu(); ?>
@@ -86,7 +86,7 @@
             <div class="app-bar-drop-container padding10 place-right no-margin-top block-shadow fg-dark" data-role="dropdown" data-no-close="true" style="width: 220px">
                 <ul class="unstyled-list fg-dark">
                     <!--li><a href="<?= URL.'/'; ?>dashboard/profile" class="fg-white1 fg-hover-yellow">Profile</a></li-->
-                    <li><a href="<?= URL.'/logout'; ?>" class="fg-white3 fg-hover-yellow">Logout</a></li>
+                    <li><a href="<?= URL.'/logout'; ?>" class="fg-white3 fg-hover-yellow"><?php echo $tpl['lang']['Logout']; ?></a></li>
                 </ul>
             </div>
         </div>
@@ -99,7 +99,7 @@
                     <ul class="sidebar">
                         <li><a href="#">
                             <span class="mif-apps icon"></span>
-                            <span class="title">Projects</span>
+                            <span class="title"><?php echo $tpl['lang']['Project']; ?></span>
                             <span class="counter"><?=count($tpl['projects']); ?></span>
                         </a></li>
 						<?php  foreach($tpl['projects'] as $project){ ?>
