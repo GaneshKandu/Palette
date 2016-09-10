@@ -99,14 +99,14 @@ class projects extends ctrl{
 			$n = new notify();
 			if(is_file($_POST['directory'].$file.'.html')){
 				$msg = array(
-					'caption' => "Project",
-					'content' => "Page Created Successfully",
+					'caption' => $data['lang']['Project'],
+					'content' => $data['lang']['pgcs'],
 					'type' => "success"
 				);
 			}else{
 				$msg = array(
-					'caption' => "Project",
-					'content' => "Unable Create Page",
+					'caption' => $data['lang']['Project'],
+					'content' => $data['lang']['utcp'],
 					'type' => "warning"
 				);
 				
@@ -148,13 +148,13 @@ class projects extends ctrl{
 		if(delete_project(PATH.DS.'sites'.DS.$proj)){
 			$msg = array(
 				'caption' => "",
-				'content' => "Removed Successfully",
+				'content' => $data['lang']['rs'],
 				'type' => "success"
 			);
 		}else{
 			$msg = array(
 				'caption' => "",
-				'content' => "Unable To Delete",
+				'content' => $data['lang']['utd'],
 				'type' => "warning"
 			);
 		}

@@ -24,7 +24,6 @@ if(!empty($error)){
 		$n->setnotification($msg);
 	}
 	$log = "[".date("d-m-Y h:i:sa")."] Error Type ".$error['type']." ".$error['message']." in ".$error['file']." on ".$error['line']."\n";
-	$myFile = "testFile.txt";
 	$logfile = fopen("logs/error.log", 'a');
 	fwrite($logfile, $log);
 	fclose($logfile);
