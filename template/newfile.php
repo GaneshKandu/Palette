@@ -18,7 +18,7 @@
 <button class="button primary" id="createfile" style="position:unset" ><span class="mif-plus"></span> <?php echo $tpl['lang']['Create']; ?>...</button>
 </td></tr>
 	</table>
-	<input type="hidden" id="directory" value="<?=$tpl['project']['path']; ?>" />
+	<input type="hidden" id="directory" value="<?php echo $tpl['project']['path']; ?>" />
 	<input type="hidden" id="baseurl" value="<?php echo (count(explode(DS,$tpl['project']['relatpath']))-1); ?>" />
 </div>
 <script>

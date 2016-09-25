@@ -2,36 +2,43 @@
 [![GitHub Issues](https://img.shields.io/github/issues/GaneshKandu/Palette.svg)](https://github.com/GaneshKandu/Palette/issues) 
 [![Releases](https://img.shields.io/github/release/GaneshKandu/Palette.svg)](https://github.com/GaneshKandu/Palette/releases) 
 
-# Make Your Own Design
-
-<p align="center"><img width="200px"src="https://github.com/GaneshKandu/Palette/blob/master/images/Palette1.jpg"></p>
-<p align="center"><img width="200px"src="https://github.com/GaneshKandu/Palette/blob/master/images/Palette2.jpg"></p>
-<p align="center"><img width="200px"src="https://github.com/GaneshKandu/Palette/blob/master/images/Palette3.jpg"></p>
+###Palette is PHP Based Site Builder
 
 # Palette
 
 Palette is PHP Based Small Site Builder
 
-## Getting Started
+# Getting Started
 
-## Prerequirement
++ [Prerequirement](#prerequirement)
++ [Installation](#installation)
++ [Installation using git](#installation-using-git)
++ [Sreenshots](https://github.com/GaneshKandu/Palette/blob/master/SCREENSHOTS.md)
++ [Language](https://github.com/GaneshKandu/Palette/blob/master/lang/LANGUAGE.md)
++ [Main Developer](#main-developers)
++ [MultiSite](#multisite)
+
+# Prerequirement
+## PHP Version
 
 * PHP 5.3+
 
-### Extension
+## Extension
 
 * gd
 * zip
 
-## Installation
+# Installation
 
 Create Folder
 
 * thumbs/
 * sites/
+* .palette/
 
 Give a Writable Permission on
 * config/
+* .palette
 * thumbs/
 * sites/
 * logs/error.log
@@ -39,7 +46,38 @@ Give a Writable Permission on
 
 and open install.php in you Browser
 
-## Main Developers
+# Installation using git
+
+```sh
+$ #installing Palette
+$ git clone https://github.com/GaneshKandu/Palette.git
+$ cd Palette
+$ mkdir thumbs sites
+$ chmod -R 777 thumbs sites config logs/error.log .htaccess .palette
+$ sudo chown -R www-data:www-data ../Palette
+```
+and open install.php in you Browser
+
+# Feature
+
+* Easy to Use
+* Support of multiple languages
+* Easy Customizing options
+* Live Editor
+* Single and Multiple Site Support
+
+# MultiSite
+
+chnage MULTISITE to true for multisite and false for singesite
+
+```php
+
+// single site
+define('MULTISITE',false);
+
+```
+
+# Main Developers
 
 * **Ganesh Kandu** [Ganesh Kandu](https://github.com/GaneshKandu)
 * **Contact** [kanduganesh@gmail.com](mailto:kanduganesh@gmail.com) :envelope:

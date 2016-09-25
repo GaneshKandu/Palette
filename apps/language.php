@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
 ///////////////////////////////////////////////////
@@ -8,9 +8,13 @@ Contact Mail : kanduganesh@gmail.com
 ///////////////////////////////////////////////////
 */
 
-
-	include 'contents.php';
-	include $tpl['content'].'.php';
-	include 'contente.php'; 
-
-?>
+class language extends ctrl{
+	
+	function index($data){
+		if(true){
+			header("Content-Type: text/css");
+			echo "*{ direction: ".$data['lang']['lang-align']."; }";
+		}
+	}
+}
+?>    

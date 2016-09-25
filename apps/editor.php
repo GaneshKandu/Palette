@@ -12,6 +12,9 @@ class editor extends ctrl{
 	
 	function index($data){
 		$data['tpl'] = "editor";
+		if(isset($_GET['B'])){
+			$data['tpl'] = "beditor";
+		}
 		$data['title'] = "Site Editor";
 		return $data;
 	}

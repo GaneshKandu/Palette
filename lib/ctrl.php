@@ -13,6 +13,7 @@ abstract class ctrl{
 	public $data = array();
 	
 	function index($data){
+		header('Location:'.URL.'/');
 		return $data;
 	}
 	

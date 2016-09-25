@@ -18,11 +18,19 @@ Contact Mail : kanduganesh@gmail.com
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <link rel="icon" href="<?php echo URL.'/'; ?>favicon.ico" type="image/x-icon" />
 	<link rel="stylesheet" href="<?php echo URL.'/'; ?>css/palette.css" /> 
-    <link href="<?php echo URL.'/'; ?>css/metro.css" rel="stylesheet" />
-    <link href="<?php echo URL.'/'; ?>css/metro-icon.css" rel="stylesheet" />
+    <!--link href="<?php echo URL.'/'; ?>css/metro.css" rel="stylesheet" /-->
+    <!--link href="<?php echo URL.'/'; ?>css/metro-icon.css" rel="stylesheet" /-->
     <script src="<?php echo URL.'/'; ?>js/jquery.min.js"></script>
-    <script src="<?php echo URL.'/'; ?>js/metro.js"></script>
+    <!--script src="<?php echo URL.'/'; ?>js/metro.js"></script-->
 	<script src="<?php echo URL.'/'; ?>js/jscolor.js"></script>
+	<script src="<?php echo URL.'/'; ?>js/rangeslider.js"></script>
+	<link src="<?php echo URL.'/'; ?>css/rangeslider.css" rel="stylesheet">
+	<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
 <ul class="v-menu" id="palatte_contex" ></ul>
@@ -36,206 +44,208 @@ Contact Mail : kanduganesh@gmail.com
 	<div class="ui-resizable-handle ui-resizable-e"></div>
 	<div class="ui-resizable-handle ui-resizable-w"></div>
 </div>
-	<div id="palette_popup" data-noselect="true" >
-		<div id="palette_popup_head">Heading</div>
-		<div id="palette_popup_Body"></div>
-		<div id="palette_popup_Buttons">
-			<button class="button" id="palette_popup_ok" ><?php echo $tpl['lang']['ok']; ?></button>
-			<button class="button" id="palette_popup_cancel" ><?php echo $tpl['lang']['Cancel']; ?></button>
-		</div>
+<div id="palette_popup" data-noselect="true" >
+	<div id="palette_popup_head">Heading</div>
+	<div id="palette_popup_Body"></div>
+	<div id="palette_popup_Buttons">
+		<button class="button" id="palette_popup_ok" ><?php echo $tpl['lang']['ok']; ?></button>
+		<button class="button" id="palette_popup_cancel" ><?php echo $tpl['lang']['Cancel']; ?></button>
 	</div>
+</div>
 <div id="tool-box">
 	<div id="pallate_title" ><span><b><?php echo $tpl['lang']['tb']; ?> ( Palette )</b></span></div>
 	<div id="tools">
 	<div class="toolbar">
 		<div class="tool-menu" >
-			<div class="toolbar-section">
-				<button class="button" onclick="palette('b');"><a href="javascript:void(0);"><b>B</b></a></button>
-				<button class="button" onclick="palette('u');"><a href="javascript:void(0);"><u>U </u></a></button>
-				<button class="button" onclick="palette('i');"><a href="javascript:void(0);"><i>I</i></a></button>
-				<button class="button" onclick="palette('del');"><a href="javascript:void(0);"><del>S</del></a></button>
+			<div class="btn-group">
+				<button type = "button" class = "btn btn-default" onclick="palette('b');"><a href="javascript:void(0);"><b>B</b></a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palette('u');"><a href="javascript:void(0);"><u>U </u></a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palette('i');"><a href="javascript:void(0);"><i>I</i></a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palette('del');"><a href="javascript:void(0);"><del>S</del></a></button>
 			</div>
-			<div class="toolbar-section">
-				<button class="button" onclick="palette('hr','none');"><a href="javascript:void(0);"><span class="mif-page-break"></span></a></button>
-				<button class="button" onclick="palette('br','none');"><a href="javascript:void(0);"><span class="mif-keyboard-return"></span></a></button>
+			<div class="btn-group">
+				<button  type = "button" class = "btn btn-default" onclick="palette('hr','none');"><a href="javascript:void(0);">HR</span></a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palette('br','none');"><a href="javascript:void(0);">BR</span></a></button>
 			</div>
-			<div class="toolbar-section">
-				<button class="button" onclick="palette('p align=\'left\'','p');"><a href="javascript:void(0);" ><span class="mif-paragraph-left"></span></a></button>
-				<button class="button" onclick="palette('p align=\'center\'','p');"><a href="javascript:void(0);"><span class="mif-paragraph-center"></span></a></button>
-				<button class="button" onclick="palette('p align=\'right\'','p');"><a href="javascript:void(0);"><span class="mif-paragraph-right"></span></a></button>
-				<button class="button" onclick="palette('p align=\'justify\'','p');"><a href="javascript:void(0);"><span class="mif-paragraph-justify"></span></a></button>
+			<div class="btn-group">
+				<button  type = "button" class = "btn btn-default" onclick="palette('p align=\'left\'','p');"><a href="javascript:void(0);" ><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span></a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palette('p align=\'center\'','p');"><a href="javascript:void(0);"><span class="glyphicon glyphicon-align-center" aria-hidden="true"></span></a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palette('p align=\'right\'','p');"><a href="javascript:void(0);"><span class="glyphicon glyphicon-align-right" aria-hidden="true"></span></a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palette('p align=\'justify\'','p');"><a href="javascript:void(0);"><span class=" glyphicon glyphicon-align-justify" aria-hidden="true"></span></a></button>
 			</div>
-			<div class="toolbar-section">
-				<div class="dropdown-button">
-					<button class="button dropdown-toggle"><span class="mif-insert-template"></span></button>
-					<ul class="split-content d-menu" data-role="dropdown">
-						<li>
-							<table id="our_table" >
-							  <tr>
-								<td style="background-color:#ff5c33;" box="1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#ff4d94;" box="2" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#6666ff;" box="3" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#00ffff;" box="4" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#ccffcc;" box="5" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#33ff88;" box="6" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>   
-								<td style="background-color:#ff5c88;" box="7" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#ff4d88;" box="8" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#666688;" box="9" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#00ff88;" box="10" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#ccff88;" box="11" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-								<td style="background-color:#33ff33;" box="12" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
-							  </tr>
-							  <tr>
-								  <td colspan="12">
-										<button class="button" onclick="addrow();"><?php echo $tpl['lang']['ar']; ?></button>
-								  </td>
-							  </tr>
-							</table>							
-						</li>
-					</ul>
-				</div>
+			<div class="btn-group">
+				<button type = "button" class = "btn btn-default dropdown-toggle" data-toggle = "dropdown">
+					Griding
+					<span class = "caret"></span>
+				</button>
+				<ul class = "dropdown-menu" >
+					<li>
+						<table id="our_table" >
+						  <tr>
+							<td style="background-color:#ff5c33;" box="1" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#ff4d94;" box="2" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#6666ff;" box="3" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#00ffff;" box="4" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#ccffcc;" box="5" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#33ff88;" box="6" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>   
+							<td style="background-color:#ff5c88;" box="7" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#ff4d88;" box="8" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#666688;" box="9" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#00ff88;" box="10" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#ccff88;" box="11" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+							<td style="background-color:#33ff33;" box="12" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>    
+						  </tr>
+						  <tr>
+							  <td colspan="12">
+									<button  type = "button" class = "btn btn-default" onclick="addrow();"><?php echo $tpl['lang']['ar']; ?></button>
+							  </td>
+						  </tr>
+						</table>							
+					</li>
+				</ul>
 			</div>
-			<div class="toolbar-section">
-				<button class="button" onclick="palatte_add_image_url();"><a href="javascript:void(0);"><span class="mif-image"></span></a></button>
-				<button class="button" onclick="display_images();"><a href="javascript:void(0);"><span class="mif-images"></span></a></button>
-				<button class="button" onclick="palatte_add_anchor();"><a href="javascript:void(0);"><span class="mif-link"></span></a></button>
-				<button class="button" onclick="palatte_add_table();"><a href="javascript:void(0);"><span class="mif-table"></span></a></button>
+			<div class="btn-group">
+				<button  type = "button" class = "btn btn-default" onclick="palatte_add_image_url();"><a href="javascript:void(0);">Image URL</a></button>
+				<button  type = "button" class = "btn btn-default" onclick="display_images();"><a href="javascript:void(0);">Images</a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palatte_add_anchor();"><a href="javascript:void(0);"><span class="glyphicon glyphicon-link" aria-hidden="true"></span></a></button>
+				<button  type = "button" class = "btn btn-default" onclick="palatte_add_table();"><a href="javascript:void(0);">Table</button>
 			</div>
-			<div class="toolbar-section">
-				<div class="dropdown-button">
-					<button class="button dropdown-toggle">Headings</button>
-					<ul class="split-content d-menu" data-role="dropdown">
-						<li><a href="javascript:void(0);" onclick="palette('h1');" >Heading 1</a></li>
-						<li><a href="javascript:void(0);" onclick="palette('h2');" >Heading 2</a></li>
-						<li><a href="javascript:void(0);" onclick="palette('h3');" >Heading 3</a></li>
-						<li><a href="javascript:void(0);" onclick="palette('h4');" >Heading 4</a></li>
-						<li><a href="javascript:void(0);" onclick="palette('h5');" >Heading 5</a></li>
-						<li><a href="javascript:void(0);" onclick="palette('h6');" >Heading 6</a></li>
-					</ul>
-				</div>
+			<div class="btn-group">
+				<button type = "button" class = "btn btn-default dropdown-toggle" data-toggle ="dropdown">
+					Header
+				<span class = "caret"></span>
+				</button>
+				<ul class = "dropdown-menu" >
+					<li><a href="javascript:void(0);" onclick="palette('h1');" >Heading 1</a></li>
+					<li><a href="javascript:void(0);" onclick="palette('h2');" >Heading 2</a></li>
+					<li><a href="javascript:void(0);" onclick="palette('h3');" >Heading 3</a></li>
+					<li><a href="javascript:void(0);" onclick="palette('h4');" >Heading 4</a></li>
+					<li><a href="javascript:void(0);" onclick="palette('h5');" >Heading 5</a></li>
+					<li><a href="javascript:void(0);" onclick="palette('h6');" >Heading 6</a></li>
+				</ul>
 			</div>
-			<div class="toolbar-section">
-				<div class="dropdown-button">
-					<button class="button dropdown-toggle">Formatting</button>
-					<ul class="split-content d-menu" data-role="dropdown">
-						<li><a href="javascript:void(0);" onclick="palette('address');" >Address</a></li>
-						<li><a href="javascript:void(0);" onclick="palette('bdi');" ><bdi>Bi-Directional</bdi></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('cite');" ><cite>Cite</cite></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('code');" ><code>Code</code></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('dfn');" ><dfn>definition</dfn></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('em');" ><em>Emphasized</em></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('kbd');" ><kbd>Keyboard input</kbd></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('mark');" ><mark>highlight</mark></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('pre');" ><pre>preformatted</pre></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('q');" ><q>quotation</q></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('strong');" ><strong>strong</strong></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('sub');" >X<sub>2</sub></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('sup');" >X<sup>2</sup></a></li>
-						<li><a href="javascript:void(0);" onclick="palette('var');" ><var>Variable</var></a></li>
-					</ul>
-				</div>
+			<div class = "btn-group">
+			  <button type = "button" class = "btn btn-default dropdown-toggle" data-toggle = "dropdown">
+				 Formatting
+				 <span class = "caret"></span>
+			  </button>
+			  <ul class = "dropdown-menu">
+				<li><a href="javascript:void(0);" onclick="palette('address');" >Address</a></li>
+				<li><a href="javascript:void(0);" onclick="palette('bdi');" ><bdi>Bi-Directional</bdi></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('cite');" ><cite>Cite</cite></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('code');" ><code>Code</code></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('dfn');" ><dfn>definition</dfn></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('em');" ><em>Emphasized</em></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('kbd');" ><kbd>Keyboard input</kbd></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('mark');" ><mark>highlight</mark></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('pre');" ><pre>preformatted</pre></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('q');" ><q>quotation</q></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('strong');" ><strong>strong</strong></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('sub');" >X<sub>2</sub></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('sup');" >X<sup>2</sup></a></li>
+				<li><a href="javascript:void(0);" onclick="palette('var');" ><var>Variable</var></a></li>
+			  </ul>
 			</div>
-			<div class="toolbar-section">
-				<input class="jscolor" id="jscolor" value="ab2567" />
-				<button class="button" onclick="palette_color();"><a href="javascript:void(0);"><span class="mif-palette"></span></a></button>
+			<input class="jscolor" id="jscolor" value="ab2567" />
+			<div class = "btn-group">
+				<button  type = "button" class = "btn btn-default" onclick="palette_color();"><a href="javascript:void(0);">Color</a></button>
 			</div>
-			<div class="toolbar-section">
-				<button class="button" onclick="palette_youtube()"><a href="javascript:void(0);"><span class="mif-embed2"></span></a></button>
+			<div class = "btn-group">
+				<button  type = "button" class = "btn btn-default" onclick="palette_youtube()"><a href="javascript:void(0);">Embedded</a></button>
 			</div>
-			<div class="toolbar-section">
-				<button class="button" onclick="palette_save('<?php 
+			<div class = "btn-group">
+				<button  type = "button" class = "btn btn-default" onclick="palette_save('<?php 
 				if(isset($tpl['project'])){
 					echo base64_encode(serialize($tpl['project']))."','".URL; 
 				}
-				?>');"><a href="javascript:void(0);"><span class="mif-floppy-disk"></span></a></button>
+				?>');"><a href="javascript:void(0);">Save</a></button>
 			</div>
-			<div class="toolbar-section">
-				<a href="<?php echo $tpl['project']['url']; ?>" target="_blank" ><button class="button"><?php echo $tpl['lang']['Preview']; ?></button></a>
+			<div class = "btn-group">
+				<a href="<?php echo $tpl['project']['url']; ?>" target="_blank" ><button  type = "button" class = "btn btn-default" ><?php echo $tpl['lang']['Preview']; ?></button></a>
 			</div>
-			<div class="toolbar-section">
-				<a href="<?php echo $tpl['project']['dashurl']; ?>" ><button class="button"><?php echo $tpl['lang']['Dashboard']; ?></button></a>
+			<div class = "btn-group">
+				<a href="<?php echo $tpl['project']['dashurl']; ?>" ><button type = "button" class = "btn btn-default" ><?php echo $tpl['lang']['Dashboard']; ?></button></a>
+		</div>
+			<div class = "btn-group">
+			  <button type = "button" class = "btn btn-default dropdown-toggle" data-toggle = "dropdown">
+				 Border
+				 <span class = "caret"></span>
+			  </button>
+			  <ul class = "dropdown-menu">
+					<li>
+						<label  class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="solid" checked>
+							<span class="check"></span>
+							<span class="caption">solid</span>
+						</label>
+					</li>
+					<li>
+						<label  class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="dotted" >
+							<span class="check"></span>
+							<span class="caption">dotted</span>
+						</label>
+					</li>
+					<li>
+						<label  class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="dashed" >
+							<span class="check"></span>
+							<span class="caption">dashed</span>
+						</label>
+					</li>
+					<li>
+						<label  class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="double" >
+							<span class="check"></span>
+							<span class="caption">double</span>
+						</label>
+					</li>
+					<li>
+						<label  class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="groove" >
+							<span class="check"></span>
+							<span class="caption">groove</span>
+						</label>
+					</li>
+					<li>
+						<label  class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="ridge" >
+							<span class="check"></span>
+							<span class="caption">ridge</span>
+						</label>
+					</li>
+					<li>
+						<label  class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="inset" >
+							<span class="check"></span>
+							<span class="caption">inset</span>
+						</label>
+					</li>
+					<li>
+						<label  class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="outset" >
+							<span class="check"></span>
+							<span class="caption">outset</span>
+						</label>
+					</li>
+					<li>
+						<label c class="radio-inline">
+							<input type="radio" name="radio_palette_border" id="radio_palette_border" value="none" >
+							<span class="check"></span>
+							<span class="caption">none</span>
+						</label>
+					</li>
+				</ul>
 			</div>
-			<div class="toolbar-section">
-				<div class="dropdown-button">
-					<button class="button dropdown-toggle">Border</button>
-					<ul class="split-content d-menu" data-role="dropdown">
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="solid" checked>
-								<span class="check"></span>
-								<span class="caption">solid</span>
-							</label>
-						</li>
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="dotted" >
-								<span class="check"></span>
-								<span class="caption">dotted</span>
-							</label>
-						</li>
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="dashed" >
-								<span class="check"></span>
-								<span class="caption">dashed</span>
-							</label>
-						</li>
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="double" >
-								<span class="check"></span>
-								<span class="caption">double</span>
-							</label>
-						</li>
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="groove" >
-								<span class="check"></span>
-								<span class="caption">groove</span>
-							</label>
-						</li>
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="ridge" >
-								<span class="check"></span>
-								<span class="caption">ridge</span>
-							</label>
-						</li>
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="inset" >
-								<span class="check"></span>
-								<span class="caption">inset</span>
-							</label>
-						</li>
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="outset" >
-								<span class="check"></span>
-								<span class="caption">outset</span>
-							</label>
-						</li>
-						<li>
-							<label class="input-control radio small-check">
-								<input type="radio" name="radio_palette_border" id="radio_palette_border" value="none" >
-								<span class="check"></span>
-								<span class="caption">none</span>
-							</label>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="toolbar-section" id="palatte_Slider"> 
-				<div class="slider" data-on-change="dropValueToInput" data-role="slider" data-max-value="50" data-min-value="0"></div>
-				<div class="input-control text">
-					<input id="slider_input" value="1">
-				</div>
+			<div class="toolbar-section" id="palatte_Slider">
+					<input id="slider_input" value="1" />
+					<div id="range" style="width:300px; margin:5em 0"></div>
 			</div>
 		</div>
 		<hr class="thin"/>
 		<span id="powerby" style="color: #000;line-height: 25px;margin-left:5px;" ><?php echo $tpl['lang']['Developed_By']; ?>  <a href="mailto:kanduganesh@gmail.com" >Ganesh Kandu</a></span>
 	</div>
-	<table style="display:none">
+<table style="display:none">
 <tr>
 	<td><input type="radio" id="1_1"  name="1" value="1" checked></td>
 	<td><input type="radio" id="1_2"  name="2" value="1"></td>
@@ -430,29 +440,25 @@ echo get_body_content($tpl['project']['path']);
 <script src="<?php echo URL.'/'; ?>js/palette.js"></script>
 <script src="<?php echo URL.'/'; ?>js/palettecms.js"></script>
 <script>
-/*
-var msgs = new Object();
-msgs.head = "My Heading";
-msgs.inputs = [
-	"what is your name",
-	"what is your fathers name"
-];
-echo.prompt(msgs).click(function(){
-	var output = palette_popup_values();
-	alert(output[0]+" "+output[1]);
-});
+	new RangeSlider($("#range"), {
+		size: 1,
+		borderSize: 0.4,
+		percentage: 100,
+	});
+</script>
+<script type="text/javascript">
 
-msgs.head = "My Heading";
-msgs.inputs = [
-	"what is your name",
-	"what is your fathers name"
-];
-echo.prompt(msgs).click(function(){
-	var output = palette_popup_values();
-	alert(output[0]+" "+output[1]);
-});
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
 
-*/
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
 </script>
 </body>
 </html>

@@ -11,8 +11,10 @@ Contact Mail : kanduganesh@gmail.com
 
 $prereq = false;
 
-if(file_exists("config".DIRECTORY_SEPARATOR ."INSTALL")){
-	header("Location:index.php");	
+@include_once("config".DIRECTORY_SEPARATOR ."config.php");
+
+if(defined('ADMIN')){
+	header("Location:index.php");
 }
 
 if(isset($_POST['action'])){
@@ -69,7 +71,8 @@ define('SECRET','$secret');
 define('URL','$Url');
 define('PATH', getcwd());
 define('VERSION', "1.0.0");
-define('LANG', 'en');
+define('LANG', 'AUTO');
+define('MULTISITE', 'false');
 \$admin = array(
 	'$admin'=> '$pass'
 );
@@ -103,9 +106,6 @@ $save = fopen("config" . DIRECTORY_SEPARATOR . "config.php", "w");
 fwrite($save, $config);
 fclose($save);
 
-$INSTALL = fopen("config".DIRECTORY_SEPARATOR ."INSTALL", "w");
-fwrite($INSTALL,time());
-fclose($INSTALL);
 }
 
 ?>
@@ -174,12 +174,24 @@ function checkprereq(){
 	
 	$files = array(
 		"logs" . DIRECTORY_SEPARATOR . "error.log",
+		".htaccess"
+	);
+	
+	$folders = array(
 		"config",
 		"thumbs",
 		"sites",
-		".htaccess"
+		".palette",
 	);
 
+	foreach($folders as $folder){
+		if(!is_dir($folder)){
+			@mkdir($folder);
+		}
+	}
+	
+	$fnf = array_merge($files,$folders);
+	
 	foreach($extensions as $extension){
 		if(!extension_loaded($extension)){
 			echo "<div class=\"grid\">
@@ -191,7 +203,7 @@ function checkprereq(){
 		}
 	}
 	
-	foreach($files as $file){
+	foreach($fnf as $file){
 		if(!is_writable($file)){
 			echo "<div class=\"grid\">
 					<div class=\"row\">

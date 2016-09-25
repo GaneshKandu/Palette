@@ -11,19 +11,61 @@ Contact Mail : kanduganesh@gmail.com
 class projects extends ctrl{
 	
 	function newproject($data){
-		$data['tpl'] = "template";
-		$data['title'] = "Palette | New Project";
-		$data['content'] = 'newproject';
+		if(MULTISITE){
+			$data['tpl'] = "template";
+			$data['title'] = "Palette | New Project";
+			$data['content'] = 'newproject';
+		}else{
+			if(file_exists(PATH.DS.".palette".DS."site")){
+				$project = trim(file_get_contents(PATH.DS.".palette".DS."site"));
+				if(!empty($project)){
+					if(is_dir(PATH.DS."sites".DS.$project)){
+						header("location:projects/files/".$project);
+					}else{
+						$data['tpl'] = "template";
+						$data['title'] = "Palette | New Project";
+						$data['content'] = 'newproject';
+					}
+				}else{
+					$data['tpl'] = "template";
+					$data['title'] = "Palette | New Project";
+					$data['content'] = 'newproject';
+				}
+			}else{
+				$data['tpl'] = "template";
+				$data['title'] = "Palette | New Project";
+				$data['content'] = 'newproject';
+			}
+		}
+		
 		return $data;
 	}
 	
 	function createproject($data){
 		$project = array();
 		if(isset($_POST['newproject'])){
+			
+			$project['project'] = $_POST['newproject'];
+			
+			if(!MULTISITE){
+				if(is_writable(".palette")){
+					$myfile = fopen(".palette/site", "w");
+					fwrite($myfile,$project['project']);
+					fclose($myfile);
+				}else{
+					$n = new notify();
+					$msg = array(
+						'caption' => $data['lang']['Permission'],
+						'content' => $data['lang']['eo'],
+						'type' => "warning"
+					);
+					$n->setnotification($msg);
+				}
+			}
+			
 			if($_POST['newproject'] == ""){
 				return false;
 			}
-			$project['project'] = $_POST['newproject'];
 			$project['title'] = isset($_POST['title'])?(trim($_POST['title'])):null;
 			$project['robots'] = isset($_POST['robots'])?(trim($_POST['robots'])):null;
 			$project['description'] = isset($_POST['description'])?(trim($_POST['description'])):null;
@@ -43,10 +85,11 @@ class projects extends ctrl{
 					'content' => $data['lang']['eo'],
 					'type' => "Alert"
 				);
-				
 			}
 			$n->setnotification($msg);
 		}
+		
+		return $data;
 	}
 	
 	function newfile($data){
@@ -69,9 +112,14 @@ class projects extends ctrl{
 			$keywords = isset($_POST['keywords'])?(trim($_POST['keywords'])):null;
 			$icon = isset($_POST['icon'])?(trim($_POST['icon'])):null;
 			$baseurl = isset($_POST['baseurl'])?(trim($_POST['baseurl'])):0;
-			
+			$baseurl = $baseurl + (count(explode("/",$file))-1);
 			for($i = 0;$i < $baseurl;$i++){
 				$base .= "../";
+			}
+			
+			if(!MULTISITE){
+				$project = trim(file_get_contents(PATH.DS.".palette".DS."site"));
+				$base = $data['url'].'sites/'.$project.'/';
 			}
 			
 			$indexcont = file_get_contents(PATH.DS.'data'.DS.'default.txt');

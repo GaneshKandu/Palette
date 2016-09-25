@@ -3,7 +3,11 @@
 <div class="input-control text full-size">
 	<table style="width:100%"  id="tbl_createfile" >
 	<tr><td><?php echo $tpl['lang']['Site_Name']; ?></td></tr>
+	<?php if(MULTISITE){ ?>
 	<tr><td><input type="text" id="project" placeholder="index" value="index" /></td></tr>
+	<? }else{ ?>
+	<input type="hidden" id="project" placeholder="index" value="palette" />
+	<?php } ?>
 	<tr><td><?php echo $tpl['lang']['Title']; ?></td></tr>
 	<tr><td><input type="text" id="title" placeholder="Palette" value="Palette" /></td></tr>
 	<tr><td>Robots</td></tr>

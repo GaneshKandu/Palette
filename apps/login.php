@@ -42,6 +42,7 @@ class login{
 			);
 			$n->setnotification($msg);
 		}
+		return $data;
 	}
 	
 }

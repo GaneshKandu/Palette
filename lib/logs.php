@@ -13,6 +13,7 @@ if(!file_exists("logs/error.log")){
 }
 
 $error = error_get_last();
+
 if(!empty($error)){
 	if(!is_writable("logs/error.log")){
 		$n = new notify();

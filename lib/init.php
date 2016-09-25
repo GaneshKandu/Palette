@@ -13,19 +13,25 @@ $data = array();
 $start_time = microtime(true);
 require_once "lib/session.php";
 require_once '__pallete.php';
-if(file_exists("config/config.php")){
-	require_once "config/config.php";
+if(!@include_once('config/config.php')){
+	if(isset($_GET['url'])){
+		$inst = "";
+		$urldata = explode("/",trim($_GET['url'],'/'));
+		$i = count($urldata);
+		for($j = 1;$j < $i ; $j++){
+			$inst .= '../';
+		}
+	}
+	echo 'Palatte is Not Successfully Installed <a href="'.$inst.'install.php" >Click Here To Install</a>';
+	die();
 }
 require_once "lib/functions.php";
 require_once "lib/default.php";
 require_once "lib/notify.php";
 require_once "lib/ctrl.php";
 require_once "lib/user.php";
- $dlang= include "lang/en.php";
-if(file_exists("lang/".LANG.".php")){
-	$lang = include "lang/".LANG.".php";
-}
-$data['lang'] = array_merge($dlang,$lang);
+require_once "lib/language.php";
+
 if(isset($_GET['url'])){
 	$url = $_GET['url'];
 	$urldata = explode("/",$url);
@@ -34,18 +40,18 @@ if(isset($_GET['url'])){
 		if(file_exists("apps/".$file.".php")){
 			require_once "apps/".$file.".php";
 		}else{
-			require_once "apps/dashboard.php";
-			$file = 'dashboard';
+			require_once "lib/multisite.php";
 		}
 	}else{
-		require_once "apps/dashboard.php";
-		$file = 'dashboard';
+		require_once "lib/multisite.php";
 	}
 }else{
-	require_once "apps/dashboard.php";
-	$file = 'dashboard';
+	require_once "lib/multisite.php";
 }
-$ctrl = new $file;
+
+if(class_exists($file)){
+	$ctrl = new $file;
+}
 
 /* Project filemanager */
 if(isset($urldata[0])){
@@ -118,26 +124,27 @@ if(isset($urldata[0])){
 	}
 }
 
-if(isset($urldata[1])){
-	$func = $urldata[1];
-	if(method_exists($ctrl,$func)){
-		$data = $ctrl->{$func}($data);
+if(isset($ctrl)){
+	if(isset($urldata[1])){
+		$func = $urldata[1];
+		if(method_exists($ctrl,$func)){
+			$data = $ctrl->{$func}($data);
+		}else{
+			$data = $ctrl->index($data);
+		}
 	}else{
 		$data = $ctrl->index($data);
 	}
-}else{
-	$data = $ctrl->index($data);
 }
+
 if(isset($data['tpl'])){
 	$tpl = $data['tpl'];
 	if(file_exists("template/".$tpl.".php")){
 		require_once "lib/loadtpl.php";
 		new loadtpl($data);
 	}
-}else{
-	require_once "apps/dashboard.php";
-	$file = 'dashboard';
 }
+
 require_once "lib/logs.php";
 $end_time = microtime(true);
 $data['time2respond'] = 'Script executed in '. round(($end_time - $start_time), 3) . 'seconds.';

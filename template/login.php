@@ -8,17 +8,19 @@ Contact Mail : kanduganesh@gmail.com
 ///////////////////////////////////////////////////
 */
 
-class tpl{ function __construct($tpl){
-	$ses = new session();
-	if($ses->isValidSession()){
-		header('Location:'.URL.'/dashboard');
-	}
+
+$ses = new session();
+if($ses->isValidSession()){
+	header('Location:'.URL.'/dashboard');
+}
+
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
-	<base href="<?=URL.'/'; ?>" />
+	<base href="<?php echo URL.'/'; ?>" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="Metro, a sleek, intuitive, and powerful framework for faster and easier web development for Windows Metro Style.">
@@ -27,7 +29,7 @@ class tpl{ function __construct($tpl){
 
     <link rel='shortcut icon' type='image/x-icon' href='favicon.ico' />
 
-    <title>Palette Login</title>
+    <title><?php echo $tpl['title']; ?></title>
 
     <link href="css/metro.css" rel="stylesheet">
     <link href="css/metro-icon.css" rel="stylesheet">
@@ -79,7 +81,7 @@ class tpl{ function __construct($tpl){
             <br />
             <div class="input-control password full-size" data-role="input">
                 <label for="user_password"><?php echo $tpl['lang']['password']; ?>:</label>
-                <input type="password" name="user_password" id="user_password">
+                <input type="password" name="user_password" id="user_password" />
                 <button class="button helper-button reveal"><span class="mif-looks"></span></button>
             </div>
             <br />
@@ -100,4 +102,3 @@ class tpl{ function __construct($tpl){
 	</script>
 </body>
 </html>
-<?php } } ?>

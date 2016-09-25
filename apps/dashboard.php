@@ -11,9 +11,24 @@ Contact Mail : kanduganesh@gmail.com
 class dashboard extends ctrl{
 	
 	function index($data){
-		$data['tpl'] = "template";
-		$data['title'] = "Palette";
-		$data['content'] = 'dashboard';
+		if(MULTISITE){
+			$data['tpl'] = "template";
+			$data['title'] = "Palette";
+			$data['content'] = 'dashboard';
+		}else{
+			if(file_exists(PATH.DS.".palette".DS."site")){
+				$project = trim(file_get_contents(PATH.DS.".palette".DS."site"));
+				if(is_dir(PATH.DS."sites".DS.$project)){
+					if(!empty($project)){
+						header("location:projects/files/".$project);
+					}
+				}else{
+					header("location:projects/newproject");
+				}
+			}else{
+				header("location:projects/newproject");
+			}
+		}
 		return $data;
 	}
 	

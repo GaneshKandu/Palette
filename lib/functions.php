@@ -48,13 +48,20 @@ function make_project($project){
 	
 	$indexcont = file_get_contents(PATH.DS.'sites'.DS.$project['project'].DS.'index.html');
 	
+	$base = "";
+	
+	if(!MULTISITE){
+		$site = trim(file_get_contents(PATH.DS.".palette".DS."site"));
+		$base = URL.'/sites/'.$site.'/';
+	}
+	
 	$meta = array(
 		'{{title}}' => tohtml($project['title']),
 		'{{robots}}' => tohtml($project['robots']),
 		'{{description}}' => tohtml($project['description']),
 		'{{keywords}}' => tohtml($project['keywords']),
 		'{{icon}}' => tohtml($project['icon']),
-		'{{baseurl}}' => ''
+		'{{baseurl}}' => $base
 	);
 			
 	$indexcont = strtr($indexcont ,$meta);
