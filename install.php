@@ -72,7 +72,7 @@ define('URL','$Url');
 define('PATH', getcwd());
 define('VERSION', "1.0.0");
 define('LANG', 'AUTO');
-define('MULTISITE', 'false');
+define('MULTISITE',false);
 \$admin = array(
 	'$admin'=> '$pass'
 );

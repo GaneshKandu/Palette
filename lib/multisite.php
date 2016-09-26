@@ -15,24 +15,25 @@ if(MULTISITE){
 	if(file_exists(PATH.DS.".palette".DS."site")){
 		$project = trim(file_get_contents(PATH.DS.".palette".DS."site"));
 	}else{
-		echo "site under maintenance";
+		require_once "data/Maintenance.html";
 	}
-	$url = str_replace("/",DS,$url);
 	if(empty($url)){
 		$url = "index.html";
 	}
-	$path = PATH.DS."sites".DS.$project.DS.$url;
-	if(file_exists($path)){
-		if(is_dir($path)){
-			$path .= "index.html";
-		}
+	if(isset($project)){
+		$path = PATH.DS."sites".DS.$project.DS.$url;
 		if(file_exists($path)){
-			include $path;
-		}else{	
-			header('HTTP/1.0 404 Not Found', true, 404);
+			if(is_dir($path)){
+				$path .= "index.html";
+			}
+			if(file_exists($path)){
+				include $path;
+			}else{	
+				require_once "data/404.html";
+			}
+		}else{
+			require_once "data/404.html";
 		}
-	}else{
-		header('HTTP/1.0 404 Not Found', true, 404);
 	}
 	
 }

@@ -18,6 +18,7 @@ define('VERSION', 'VERSION');
 	Note : Keep "DEFAULT" value for auto language selection
 */
 define('LANG', 'DEFAULT');
+define('MULTISITE',false);
 $admin = array(
 	'admin'=> md5('admin')
 );

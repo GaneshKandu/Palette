@@ -52,7 +52,7 @@
 </head>
 <body class="bg-steel" style="min-height: 100%" >
     <div class="app-bar fixed-top darcula" data-role="appbar">
-        <a class="app-bar-element branding" href="<?php echo  URL.'/'; ?>" ><?php echo $tpl['lang']['Palette']; ?></a>
+        <a class="app-bar-element branding" <?php if(!MULTISITE){ echo "target=\"_BLANK\""; } ?> href="<?php echo  URL.'/'; ?>" ><?php echo $tpl['lang']['Palette']; ?></a>
         <span class="app-bar-divider"></span>
         <ul class="app-bar-menu">
             <li><a href="<?php echo  URL.'/dashboard'; ?>"><?php echo $tpl['lang']['Dashboard']; ?></a></li>
