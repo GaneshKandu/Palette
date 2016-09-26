@@ -14,8 +14,9 @@ Palette is PHP Based Small Site Builder
 + [Installation](#installation)
 + [Installation using git](#installation-using-git)
 + [Sreenshots](https://github.com/GaneshKandu/Palette/blob/master/SCREENSHOTS.md)
-+ [Language](https://github.com/GaneshKandu/Palette/blob/master/lang/LANGUAGE.md)
++ [Language](https://github.com/GaneshKandu/Palette/blob/master/lang/LANGUAGE.md)Feature
 + [Main Developer](#main-developers)
++ [Feature](#feature)
 + [MultiSite](#multisite)
 
 # Prerequirement
@@ -52,7 +53,7 @@ and open install.php in you Browser
 $ #installing Palette
 $ git clone https://github.com/GaneshKandu/Palette.git
 $ cd Palette
-$ mkdir thumbs sites
+$ mkdir thumbs sites .palette
 $ chmod -R 777 thumbs sites config logs/error.log .htaccess .palette
 $ sudo chown -R www-data:www-data ../Palette
 ```
