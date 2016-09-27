@@ -14,8 +14,8 @@ $start_time = microtime(true);
 require_once "lib/session.php";
 require_once '__pallete.php';
 if(!@include_once('config/config.php')){
+	$inst = "";
 	if(isset($_GET['url'])){
-		$inst = "";
 		$urldata = explode("/",trim($_GET['url'],'/'));
 		$i = count($urldata);
 		for($j = 1;$j < $i ; $j++){

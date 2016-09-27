@@ -196,11 +196,20 @@ function checkprereq(){
 		if(!extension_loaded($extension)){
 			echo "<div class=\"grid\">
 					<div class=\"row\">
-						<div class=\"cell\" style=\"padding:10px;color:#FFF;background-color:#F00;font-size:20px\">Extension ".$extension." is Installed</div>
+						<div class=\"cell\" style=\"padding:10px;color:#FFF;background-color:#F00;font-size:20px\">Extension ".$extension." is Not Installed</div>
 					</div>
 				 </div>";
 				$done = false;
 		}
+	}
+	
+	if(!in_array('mod_rewrite', apache_get_modules())){
+			echo "<div class=\"grid\">
+					<div class=\"row\">
+						<div class=\"cell\" style=\"padding:10px;color:#FFF;background-color:#F00;font-size:20px\">mod_rewrite module is not enabled</div>
+					</div>
+				 </div>";
+				$done = false;
 	}
 	
 	foreach($fnf as $file){

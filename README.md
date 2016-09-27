@@ -29,6 +29,10 @@ Palette is PHP Based Small Site Builder
 * gd
 * zip
 
+## Mod Rewrite
+
+* ``` mod_rewrite ``` should be enabled for friendly ``` URL ```
+
 # Installation
 
 Create Folder
