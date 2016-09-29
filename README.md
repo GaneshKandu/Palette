@@ -18,6 +18,8 @@ Palette is PHP Based Small Site Builder
 + [Main Developer](#main-developers)
 + [Feature](#feature)
 + [MultiSite](#multisite)
++ [Third Party Components](#third-party-components)
++ [Main Developers](#main-developers)
 
 # Prerequirement
 ## PHP Version
@@ -81,6 +83,26 @@ chnage MULTISITE to true for multisite and false for singesite
 define('MULTISITE',false);
 
 ```
+# MultiSite
+
+chnage MULTISITE to true for multisite and false for singesite
+
+```php
+
+// single site
+define('MULTISITE',false);
+
+```
+# Third Party Components
+
+* thanks the following open source projects for the components used by Palette
+
+|Components|Link|
+|---|---|
+|Metro UI|[http://metroui.org.ua](http://metroui.org.ua)|
+|JQuery|[https://jquery.com](https://jquery.com)|
+|JSColor|[http://jscolor.com](http://jscolor.com)|
+|DropzoneJS|[http://www.dropzonejs.com](http://www.dropzonejs.com)|
 
 # Main Developers
 

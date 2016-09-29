@@ -15,4 +15,5 @@
 <tr><td><h4>Metro UI</h4></td><td><h4>3.0</h4></td><td><h4><a TARGET="_blank" href="http://metroui.org.ua/">http://metroui.org.ua/</a></h4></td></tr>
 <tr><td><h4>JQuery</h4></td><td><h4>2.1.3</h4></td><td><h4><a TARGET="_blank" href="https://jquery.com/">https://jquery.com/</a></h4></td></tr>
 <tr><td><h4>JSColor</h4></td><td><h4>2.4.0</h4></td><td><h4><a TARGET="_blank" href="http://jscolor.com/">http://jscolor.com/</a></h4></td></tr>
+<tr><td><h4>DropzoneJS</h4></td><td><h4>4.3.0</h4></td><td><h4><a TARGET="_blank" href="http://www.dropzonejs.com">http://www.dropzonejs.com</a></h4></td></tr>
 </table>
