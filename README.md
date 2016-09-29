@@ -83,16 +83,7 @@ chnage MULTISITE to true for multisite and false for singesite
 define('MULTISITE',false);
 
 ```
-# MultiSite
 
-chnage MULTISITE to true for multisite and false for singesite
-
-```php
-
-// single site
-define('MULTISITE',false);
-
-```
 # Third Party Components
 
 * thanks the following open source projects for the components used by Palette
