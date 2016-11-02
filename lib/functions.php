@@ -51,8 +51,7 @@ function make_project($project){
 	$base = "";
 	
 	if(!MULTISITE){
-		$site = trim(file_get_contents(PATH.DS.".palette".DS."site"));
-		$base = URL.'/sites/'.$site.'/';
+		$base = URL.'/sites/palette/';
 	}
 	
 	$meta = array(
@@ -247,3 +246,72 @@ function tohtml($txt){
 	);
 	return strtr($txt,$arr);
 }
+
+function language($dlang,$lang){
+	$lang_file = "lang".DS.$lang.".lang";
+	if(file_exists($lang_file)){
+		$str = file_get_contents($lang_file);
+		$lang_array = explode("\r\n",$str);
+	}else{
+		return false;
+	}
+	$i = 0;
+	$langarray = array();
+	foreach($dlang as $key => $value){
+		$langarray[$key] = trim($lang_array[$i++]);
+	}
+	return $langarray;
+}
+
+function create_zip($files_to_zip, $destination) {
+	$zip = new ZipArchive();
+	$zip->open($destination, ZipArchive::CREATE);
+	foreach($files_to_zip as $files){
+		$file = substr($files,6,strlen($files)-6);
+		$zip->addFile($files,$file);
+	}
+	$zip->close();
+}
+
+function make_zip($source, $destination) {
+	$files_to_zip = getfiles($source);
+    if(create_zip($files_to_zip, $destination)){
+		return true;
+	}else{
+		return false;
+	} 
+}
+
+function getfiles($source){
+    $files = glob($source . DS.'*');
+	$files_to_zip = array();
+	foreach($files as $file){
+		if(is_dir($file)){
+			$folders_files = getfiles($file);
+			foreach($folders_files as $file){
+				$files_to_zip[] = $file;
+			}
+		}else{
+			$files_to_zip[] = $file;
+		}
+	}
+	return $files_to_zip;
+}
+
+function backups(){
+	$output = array();
+	$backups = glob(".palette".DS."backup".DS."*.backup");
+	$i = 0;
+	foreach($backups as $files){
+		$backname = end(explode(DS,$files));
+		$name = substr($backname,0,(strlen($backname)-11));
+		$output[$i]["files"] = $name;
+		$output[$i]["mtime"] = date("d-m-Y H:i:s.",filemtime($files));
+		$output[$i]["size"] = number_format((((filesize($files))/1024)/1024), 2, '.', '')." MB";
+		$output[$i]["restore"] = "onclick=\"restore_backup('".$backname."');\"";
+		$output[$i]["delete"]  = "onclick=\"delete_backup('".$backname."');\"";
+		$i++;
+	}
+	return $output;
+}
+

@@ -6,6 +6,15 @@
 	<input type="hidden" name="path" value="<?php echo $tpl['project']['path']; ?>" />
 </form> 
 <hr class="thin bg-grayLighter"/>
+<?php if(!MULTISITE){ ?>
+<table>
+	<tr>
+	<td><?php echo $tpl['lang']['Remove']; ?></td><td><a href="javascript:void(0)" onclick="rmproject('palette')" ><span class="mif-bin"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td><?php echo $tpl['lang']['backup']; ?></td><td><a href="javascript:void(0)" onclick="backup('palette')" ><span class="mif-file-zip"></span></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+	<td><?php echo $tpl['lang']['downloads']; ?></td><td><a href="javascript:void(0)" onclick="download_zip('palette')" ><span class="mif-download"></span></a></td>
+	</tr>
+</table>
+<?php } ?>
 <table class="dataTable border bordered" data-auto-width="false">
 <tbody>
 

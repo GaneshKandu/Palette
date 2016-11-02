@@ -12,10 +12,10 @@ if(MULTISITE){
 	require_once "apps/dashboard.php";
 	$file = 'dashboard';
 }else{
-	if(file_exists(PATH.DS.".palette".DS."site")){
-		$project = trim(file_get_contents(PATH.DS.".palette".DS."site"));
+	if(is_dir(PATH.DS."sites".DS."palette")){
+		$project = "palette";
 	}else{
-		require_once "data/Maintenance.html";
+		require_once "data/Maintenance.php";
 	}
 	if(empty($url)){
 		$url = "index.html";
@@ -29,10 +29,10 @@ if(MULTISITE){
 			if(file_exists($path)){
 				include $path;
 			}else{	
-				require_once "data/404.html";
+				require_once "data/404.php";
 			}
 		}else{
-			require_once "data/404.html";
+			require_once "data/404.php";
 		}
 	}
 	

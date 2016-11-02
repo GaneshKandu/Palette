@@ -81,6 +81,7 @@
                     <li><a href="<?php echo  URL.'/'; ?>dashboard/about"><?php echo $tpl['lang']['About']; ?></a></li>
                 </ul>
             </li>
+            <li><a href="<?php echo  URL.'/backup'; ?>"><?php echo $tpl['lang']['backups']; ?></a></li>
 			<?php __palatte_menu(); ?>
         </ul>
 

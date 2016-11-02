@@ -1,3 +1,14 @@
+#Palette
+
+.palette/*
+!.palette/.gitkeep
+config/config.php
+lang/*.lang
+sites/*
+!sites/.gitkeep
+thumbs/*
+!thumbs/.gitkeep
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db

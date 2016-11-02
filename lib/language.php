@@ -8,7 +8,7 @@ Contact Mail : kanduganesh@gmail.com
 ///////////////////////////////////////////////////
 */
 
-	$dlang= include "lang/en.php";
+	$dlang= include "lib/en.php";
 
 	if( LANG == "AUTO"){
 		if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
@@ -20,11 +20,15 @@ Contact Mail : kanduganesh@gmail.com
 
 	if(file_exists("lang/".$lf.".php")){
 		$lang = include "lang/".$lf.".php";
+	}elseif(file_exists("lang/".$lf.".lang")){
+		$lang = language($dlang,$lf);
 	}else{
-		$lang = include "lang/en.php";
+		$lang = include "lib/en.php";
 	}
 
 	$data['lang'] = array_merge($dlang,$lang);
-	$data['lang']['Auto-lang'] = $lf; 
+	$data['lang']['Auto-lang'] = $lf;
+	
+	___($data)
 	
 ?>

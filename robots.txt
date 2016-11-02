@@ -1,0 +1,5 @@
+User-agent: *
+Disallow: /login
+Disallow: /dashboard
+Disallow: /projects
+Disallow: /editor

@@ -16,15 +16,8 @@ class dashboard extends ctrl{
 			$data['title'] = "Palette";
 			$data['content'] = 'dashboard';
 		}else{
-			if(file_exists(PATH.DS.".palette".DS."site")){
-				$project = trim(file_get_contents(PATH.DS.".palette".DS."site"));
-				if(is_dir(PATH.DS."sites".DS.$project)){
-					if(!empty($project)){
-						header("location:projects/files/".$project);
-					}
-				}else{
-					header("location:projects/newproject");
-				}
+			if(is_dir(PATH.DS."sites".DS."palette")){
+				header("location:projects/files/palette");
 			}else{
 				header("location:projects/newproject");
 			}

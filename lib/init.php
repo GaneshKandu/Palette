@@ -25,6 +25,7 @@ if(!@include_once('config/config.php')){
 	echo 'Palatte is Not Successfully Installed <a href="'.$inst.'install.php" >Click Here To Install</a>';
 	die();
 }
+
 require_once "lib/functions.php";
 require_once "lib/default.php";
 require_once "lib/notify.php";

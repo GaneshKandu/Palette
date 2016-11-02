@@ -9,6 +9,8 @@
                             <td class="sortable-column"><?php echo $tpl['lang']['Open']; ?></td>
                             <td class="sortable-column"><?php echo $tpl['lang']['Preview']; ?></td>
                             <td class="sortable-column"><?php echo $tpl['lang']['Remove']; ?></td>
+                            <td class="sortable-column"><?php echo $tpl['lang']['backup']; ?></td>
+                            <td class="sortable-column"><?php echo $tpl['lang']['downloads']; ?></td>
                         </tr>
                         </thead>
                         <tbody>
@@ -25,6 +27,12 @@
 						</td>
 						<td>
 						<a href="javascript:void(0)" onclick="rmproject('<?php echo $project;?>')" ><span class="mif-bin"></span></a>
+						</td>
+						<td>
+						<a href="javascript:void(0)" onclick="backup('<?php echo $project;?>')" ><span class="mif-file-zip"></span></a>
+						</td>
+						<td>
+						<a href="javascript:void(0)" onclick="download_zip('<?php echo $project;?>')" ><span class="mif-download"></span></a>
 						</td>
 						</tr>
 						<?php } ?>

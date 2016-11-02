@@ -16,21 +16,8 @@ class projects extends ctrl{
 			$data['title'] = "Palette | New Project";
 			$data['content'] = 'newproject';
 		}else{
-			if(file_exists(PATH.DS.".palette".DS."site")){
-				$project = trim(file_get_contents(PATH.DS.".palette".DS."site"));
-				if(!empty($project)){
-					if(is_dir(PATH.DS."sites".DS.$project)){
-						header("location:projects/files/".$project);
-					}else{
-						$data['tpl'] = "template";
-						$data['title'] = "Palette | New Project";
-						$data['content'] = 'newproject';
-					}
-				}else{
-					$data['tpl'] = "template";
-					$data['title'] = "Palette | New Project";
-					$data['content'] = 'newproject';
-				}
+			if(is_dir(PATH.DS."sites".DS."palette")){
+				header("location:projects/files/palette");
 			}else{
 				$data['tpl'] = "template";
 				$data['title'] = "Palette | New Project";
@@ -46,26 +33,11 @@ class projects extends ctrl{
 		if(isset($_POST['newproject'])){
 			
 			$project['project'] = $_POST['newproject'];
-			
-			if(!MULTISITE){
-				if(is_writable(".palette")){
-					$myfile = fopen(".palette/site", "w");
-					fwrite($myfile,$project['project']);
-					fclose($myfile);
-				}else{
-					$n = new notify();
-					$msg = array(
-						'caption' => $data['lang']['Permission'],
-						'content' => $data['lang']['eo'],
-						'type' => "warning"
-					);
-					$n->setnotification($msg);
-				}
-			}
-			
+						
 			if($_POST['newproject'] == ""){
 				return false;
 			}
+			
 			$project['title'] = isset($_POST['title'])?(trim($_POST['title'])):null;
 			$project['robots'] = isset($_POST['robots'])?(trim($_POST['robots'])):null;
 			$project['description'] = isset($_POST['description'])?(trim($_POST['description'])):null;
@@ -118,8 +90,7 @@ class projects extends ctrl{
 			}
 			
 			if(!MULTISITE){
-				$project = trim(file_get_contents(PATH.DS.".palette".DS."site"));
-				$base = $data['url'].'sites/'.$project.'/';
+				$base = $data['url'].'sites/palette/';
 			}
 			
 			$indexcont = file_get_contents(PATH.DS.'data'.DS.'default.txt');
@@ -251,6 +222,52 @@ class projects extends ctrl{
 		}
 		fwrite($save, $body);
 		fclose($save);
+	}
+	
+	function backup($data){
+		$project = isset($_POST['project'])?(trim($_POST['project'])):null;
+		$action = isset($_POST['action'])?(trim($_POST['action'])):null;
+		$source = 'sites'.DS.$project;
+		if (!is_dir (PATH.DS.'.palette'.DS."backup")){
+			mkdir(PATH.DS.'.palette'.DS."backup", 0770);
+		}				
+		$destination = PATH.DS.'.palette'.DS."backup".DS.$project."_".date('Y_m_d_H_i_s')."_".time().".zip.backup";
+		if(!empty($project)){
+			make_zip($source, $destination);
+		}
+		if(file_exists($destination)){
+			$n = new notify();
+			$msg = array(
+				'caption' => $data['lang']['backup'],
+				'content' => $data['lang']['backup']." ".$data['lang']['bct'],
+				'type' => "success"
+			);
+			$n->setnotification($msg);
+		}else{
+			$n = new notify();
+			$msg = array(
+				'caption' => $data['lang']['backup'],
+				'content' => $data['lang']['utc']." ".$data['lang']['backup'],
+				'type' => "warning"
+			);
+			$n->setnotification($msg);
+		}
+		return $data;
+	}
+	
+	function downloadzip($data){
+		$project = isset($_POST['project'])?(trim($_POST['project'])):null;
+		$action = isset($_POST['action'])?(trim($_POST['action'])):null;
+		$source = 'sites'.DS.$project;
+		if (!is_dir (PATH.DS.'.palette'.DS."downloads")){
+			mkdir(PATH.DS.'.palette'.DS."downloads", 0770);
+		}
+		echo $zip_file = $project."_".date('Y_m_d_H_i_s')."_".time().".zip";	
+		$destination = PATH.DS.'.palette'.DS."downloads".DS.$zip_file;
+		if(!empty($project)){
+			make_zip($source, $destination);
+		}
+		return $data;
 	}
 }
 ?>

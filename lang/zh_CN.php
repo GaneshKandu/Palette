@@ -8,7 +8,7 @@ Contact Mail : kanduganesh@gmail.com
 ///////////////////////////////////////////////////
 */
 
-$language['zh'] = 'Chinese';
+$language['zh_CN'] = 'Chinese (Simplified)';
 
 return array(
     "lang-align" => "ltr",

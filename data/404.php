@@ -41,7 +41,7 @@
   <div id="e">
     <span id="e2">404 </span>
     <span id="e3">Page not found</span>
-    <p>The requested URL "{PATH}" was not found on this server.</p>
+    <p>The requested URL is not found on this server.</p>
     <p><a href="https://github.com/GaneshKandu/Palette" target="_BLANK" >Pallete</a></p>
   </div>
 </body>

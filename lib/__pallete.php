@@ -10,5 +10,5 @@ Contact Mail : kanduganesh@gmail.com
 
 function __pallete($a,$b){}
 function __palatte_menu(){}
-
+function ___($data){}
 ?>
