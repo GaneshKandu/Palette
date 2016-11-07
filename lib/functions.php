@@ -306,7 +306,7 @@ function backups(){
 		$backname = end(explode(DS,$files));
 		$name = substr($backname,0,(strlen($backname)-11));
 		$output[$i]["files"] = $name;
-		$output[$i]["mtime"] = date("d-m-Y H:i:s.",filemtime($files));
+		$output[$i]["mtime"] = date("d-m-Y H:i:s",filemtime($files));
 		$output[$i]["size"] = number_format((((filesize($files))/1024)/1024), 2, '.', '')." MB";
 		$output[$i]["restore"] = "onclick=\"restore_backup('".$backname."');\"";
 		$output[$i]["delete"]  = "onclick=\"delete_backup('".$backname."');\"";

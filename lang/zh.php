@@ -69,5 +69,9 @@ return array(
     "utc" => "无法创建",
     "res" => "已成功恢复",
     "ures" => "无法还原",
-    "Auto-lang" => "en"
+    "dfh" => "将文件拖放到此处上传",
+    "ssfy" => "成功保存",
+    "unsc" => "不成功",
+    "info" => "信息",
+    "warning" => "警告"
 );

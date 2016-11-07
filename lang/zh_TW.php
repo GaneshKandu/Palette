@@ -56,7 +56,7 @@ return array(
     "ext" => "延期",
     "Permission" => "允許",
     "tnw" => "thumbs不可寫",
-    "rs" => "已成功移除",
+    "rs" => "已成功刪除",
     "utd" => "無法刪除",
     "language" => "語言",
     "backups" => "備份",
@@ -69,5 +69,9 @@ return array(
     "utc" => "無法創建",
     "res" => "已成功恢復",
     "ures" => "無法還原",
-    "Auto-lang" => "en"
+    "dfh" => "將文件拖放到此處即可上傳",
+    "ssfy" => "成功保存",
+    "unsc" => "不成功",
+    "info" => "信息",
+    "warning" => "警告"
 );

@@ -8,6 +8,8 @@ sites/*
 !sites/.gitkeep
 thumbs/*
 !thumbs/.gitkeep
+dev
+yuicompress.jar
 
 # Windows image file caches
 Thumbs.db

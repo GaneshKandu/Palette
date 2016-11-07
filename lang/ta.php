@@ -11,7 +11,7 @@ Contact Mail : kanduganesh@gmail.com
 $language['ta'] = 'Tamil';
 
 return array(
-    "lang-align" => "லிட்டர்",
+    "lang-align" => "ltr",
     "Palette" => "தட்டு",
     "Dashboard" => "டாஷ்போர்டு",
     "Project" => "திட்ட",
@@ -69,5 +69,9 @@ return array(
     "utc" => "உருவாக்க முடியவில்லை",
     "res" => "வெற்றிகரமாக மீட்டெடுக்கப்பட்டது",
     "ures" => "மீட்க முடியவில்லை",
-    "Auto-lang" => "en"
+    "dfh" => "பதிவேற்ற கோப்புகளை இங்கே",
+    "ssfy" => "வெற்றிகரமாக சேமிக்கப்பட்டது",
+    "unsc" => "தோல்வியுற்றார்",
+    "info" => "தகவல்",
+    "warning" => "எச்சரிக்கை"
 );

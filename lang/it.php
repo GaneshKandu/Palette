@@ -11,7 +11,7 @@ Contact Mail : kanduganesh@gmail.com
 $language['it'] = 'Italian';
 
 return array(
-    "lang-align" => "litri",
+    "lang-align" => "ltr",
     "Palette" => "Tavolozza",
     "Dashboard" => "scrivania",
     "Project" => "Progetto",
@@ -69,5 +69,9 @@ return array(
     "utc" => "Impossibile creare",
     "res" => "restaurato con successo",
     "ures" => "Impossibile ripristinare",
-    "Auto-lang" => "en"
+    "dfh" => "Drop dei file da caricare qui",
+    "ssfy" => "Salvato con successo",
+    "unsc" => "un successo",
+    "info" => "Informazioni",
+    "warning" => "avvertimento"
 );

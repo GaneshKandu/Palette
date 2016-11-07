@@ -71,5 +71,10 @@ return array(
 'utc'                    => 'Unable to Create',
 'res'                    => 'Restored Successfully',
 'ures'                   => 'Unable to Restore',
-	
+'dfh'                    => 'Drop files here to upload',
+"ssfy"                   => "Saved Successfully",
+"unsc"                   => "Unsuccessfull",
+"info"                   => "Info",
+"warning"                => "Warning",
+
 );

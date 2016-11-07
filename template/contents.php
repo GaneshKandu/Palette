@@ -15,6 +15,7 @@
     <link href="css/metro-icon.css" rel="stylesheet"/>
     <link href="css/metro-responsive.css" rel="stylesheet"/>
 	<link href="css/dropzone.css" type="text/css" rel="stylesheet" />
+    <script src="languagejs"></script>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.dataTables.min.js"></script>
     <script src="js/metro.js"></script>

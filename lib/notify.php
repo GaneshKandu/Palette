@@ -32,7 +32,7 @@ class notify{
 				echo $key.":'".$value."'";
 			}
 			echo "});";
-			echo "$.get(\"popup\",function(data, status){});";
+			echo "$.get(\"".URL."/popup\",function(data, status){});";
 			echo "</script>";
 		}else{
 			$result =  false;

@@ -66,7 +66,6 @@ Contact Mail : kanduganesh@gmail.com
 ///////////////////////////////////////////////////
 */
 
-date_default_timezone_set('America/Los_Angeles');
 define('DS', DIRECTORY_SEPARATOR); 
 define('SECRET','$secret');
 define('URL','$Url');
@@ -95,16 +94,6 @@ $htaccess = <<<HTACCESS
 	RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteCond %{REQUEST_URI} !\.(js|css|jpeg|gif|png|bmp|ico)$ [NC]
 	RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
-</IfModule>
-<IfModule mod_gzip.c>
-    mod_gzip_on       Yes
-    mod_gzip_dechunk  Yes
-    mod_gzip_item_include file      \.(txt|css|js|php|pl)$
-    mod_gzip_item_include handler   ^cgi-script$
-    mod_gzip_item_include mime      ^text/.*
-    mod_gzip_item_include mime      ^application/x-javascript.*
-    mod_gzip_item_exclude mime      ^image/.*
-    mod_gzip_item_exclude rspheader ^Content-Encoding:.*gzip.*
 </IfModule>
 HTACCESS;
 
@@ -220,6 +209,7 @@ function checkprereq(){
 						<div class=\"cell\" style=\"padding:10px;color:#FFF;background-color:#F00;font-size:20px\">mod_rewrite module is not enabled</div>
 					</div>
 				 </div>";
+				$done = false;
 	}
 	
 	foreach($fnf as $file){

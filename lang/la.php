@@ -69,5 +69,9 @@ return array(
     "utc" => "Facere non poterant",
     "res" => "restituit Feliciter",
     "ures" => "Potui to Redde",
-    "Auto-lang" => "en"
+    "dfh" => "Ut occumbo lima upload",
+    "ssfy" => "Feliciter salvus",
+    "unsc" => "Un successfull",
+    "info" => "Info",
+    "warning" => "Warning"
 );

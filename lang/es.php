@@ -15,7 +15,7 @@ return array(
     "Palette" => "Paleta",
     "Dashboard" => "Tablero",
     "Project" => "Proyecto",
-    "Projects" => "proyectos",
+    "Projects" => "Proyectos",
     "New" => "Nuevo",
     "Open" => "Abierto",
     "Help" => "Ayuda",
@@ -61,7 +61,7 @@ return array(
     "language" => "idioma",
     "backups" => "Copias de seguridad",
     "backup" => "Apoyo",
-    "downloads" => "descargas",
+    "downloads" => "Descargas",
     "mtime" => "hora creada",
     "size" => "tamaño",
     "restore" => "Restaurar",
@@ -69,5 +69,9 @@ return array(
     "utc" => "Incapaz de crear",
     "res" => "Restaurado con éxito",
     "ures" => "No se puede restaurar",
-    "Auto-lang" => "en"
+    "dfh" => "Arrastra los archivos aquí para subirlos",
+    "ssfy" => "Guardado exitosamente",
+    "unsc" => "sin éxito",
+    "info" => "Información",
+    "warning" => "Advertencia"
 );

@@ -12,6 +12,7 @@ session_start();
 $data = array();
 $start_time = microtime(true);
 require_once "lib/session.php";
+require_once "lib/notify.php";
 require_once '__pallete.php';
 if(!@include_once('config/config.php')){
 	$inst = "";
@@ -28,7 +29,6 @@ if(!@include_once('config/config.php')){
 
 require_once "lib/functions.php";
 require_once "lib/default.php";
-require_once "lib/notify.php";
 require_once "lib/ctrl.php";
 require_once "lib/user.php";
 require_once "lib/language.php";

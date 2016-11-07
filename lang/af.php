@@ -69,5 +69,9 @@ return array(
     "utc" => "Kan nie skep",
     "res" => "suksesvol herstel",
     "ures" => "Kan nie herstel",
-    "Auto-lang" => "en"
+    "dfh" => "Drop lêers hier op te laai",
+    "ssfy" => "suksesvol gestoor",
+    "unsc" => "Percentage mislukte",
+    "info" => "info",
+    "warning" => "waarskuwing"
 );

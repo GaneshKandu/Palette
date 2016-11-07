@@ -69,5 +69,9 @@ return array(
     "utc" => "Ne može se kreirati",
     "res" => "obnovljena Uspješno",
     "ures" => "U nemogućnosti da Restore",
-    "Auto-lang" => "en"
+    "dfh" => "Ispustite datoteke ovdje za upload",
+    "ssfy" => "Sačuvane Uspješno",
+    "unsc" => "bezuspešne",
+    "info" => "info",
+    "warning" => "upozorenje"
 );

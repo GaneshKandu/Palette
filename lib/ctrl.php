@@ -17,6 +17,9 @@ abstract class ctrl{
 		return $data;
 	}
 	
+	/*
+	Checking User Login
+	*/
 	function __construct(){
 		$ses = new session();
 		$data['user'] = $ses->UserDetail();

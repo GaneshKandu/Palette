@@ -69,5 +69,9 @@ return array(
     "utc" => "Unfähig etwas zu erschaffen",
     "res" => "Erfolgreich restauriert",
     "ures" => "Kann nicht wiederhergestellt werden",
-    "Auto-lang" => "en"
+    "dfh" => "Ziehe die Dateien hier hin, um sie hochzuladen",
+    "ssfy" => "Erfolgreich gespeichert",
+    "unsc" => "Erfolglos",
+    "info" => "Info",
+    "warning" => "Warnung"
 );

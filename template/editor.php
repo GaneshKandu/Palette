@@ -20,6 +20,7 @@ Contact Mail : kanduganesh@gmail.com
 	<link rel="stylesheet" href="<?php echo URL.'/'; ?>css/palette.css" /> 
     <link href="<?php echo URL.'/'; ?>css/metro.css" rel="stylesheet" />
     <link href="<?php echo URL.'/'; ?>css/metro-icon.css" rel="stylesheet" />
+    <script src="<?php echo URL.'/'; ?>languagejs"></script>
     <script src="<?php echo URL.'/'; ?>js/jquery.min.js"></script>
     <script src="<?php echo URL.'/'; ?>js/metro.js"></script>
 	<script src="<?php echo URL.'/'; ?>js/jscolor.js"></script>
@@ -100,6 +101,10 @@ Contact Mail : kanduganesh@gmail.com
 				<button class="button" onclick="display_images();"><a href="javascript:void(0);"><span class="mif-images"></span></a></button>
 				<button class="button" onclick="palatte_add_anchor();"><a href="javascript:void(0);"><span class="mif-link"></span></a></button>
 				<button class="button" onclick="palatte_add_table();"><a href="javascript:void(0);"><span class="mif-table"></span></a></button>
+			</div>
+			<div class="toolbar-section">
+				<button class="button" onclick="olist();"><a href="javascript:void(0);" ><span class="mif-list-numbered"></span></a></button>
+				<button class="button" onclick="ulist();"><a href="javascript:void(0);"><span class="mif-list2"></span></a></button>
 			</div>
 			<div class="toolbar-section">
 				<div class="dropdown-button">
@@ -454,5 +459,9 @@ echo.prompt(msgs).click(function(){
 
 */
 </script>
+<?php 
+$n = new notify();
+$n->get_notification();
+?>
 </body>
 </html>

@@ -69,5 +69,9 @@ return array(
     "utc" => "Tidak dapat Buat",
     "res" => "dipulihkan Berhasil",
     "ures" => "Tidak dapat Kembalikan",
-    "Auto-lang" => "en"
+    "dfh" => "Drop file disini untuk mengunggah",
+    "ssfy" => "disimpan Berhasil",
+    "unsc" => "un sukses",
+    "info" => "Info",
+    "warning" => "PERINGATAN"
 );
