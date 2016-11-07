@@ -10,7 +10,7 @@ thumbs/*
 !thumbs/.gitkeep
 dev
 yuicompress.jar
-
+PaletteCMS.zip
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
