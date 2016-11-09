@@ -26,7 +26,7 @@ Contact Mail : kanduganesh@gmail.com
 		$lang = include "lib/en.php";
 	}
 
-	$data['lang'] = array_merge($dlang,$lang);	
+	$data['lang'] = array_merge($dlang,$lang);
 	___($data)
 	
 ?>

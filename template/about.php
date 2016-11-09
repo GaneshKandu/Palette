@@ -1,8 +1,13 @@
+<?php 	
+	if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])){
+		$lf = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+	}
+?>
 <h3 class="text-light"><?php echo $tpl['lang']['About']; ?><span class="mif-palette place-right"></span></h3>
 <hr class="thin bg-grayLighter"/>
 <table>
 <tr><td><h4><?php echo $tpl['lang']['Developer']; ?></h4></td><td>:   </td><td><h4>Ganesh Kandu</h4></td></tr>
-<tr><td><h4><?php echo $tpl['lang']['language']; ?></h4></td><td>:   </td><td><h4><?php echo $tpl['lang']['Auto-lang']; ?></h4></td></tr>
+<tr><td><h4><?php echo $tpl['lang']['language']; ?></h4></td><td>:   </td><td><h4><?php echo $lf; ?></h4></td></tr>
 <tr><td><h4><?php echo $tpl['lang']['Mail']; ?></h4></td><td>:</td><td><h4><a TARGET="_blank" href="mailto:kanduganesh@gmail.com">kanduganesh@gmail.com</a></h4></td></tr>
 <tr><td><h4><?php echo $tpl['lang']['Issues']; ?></h4></td><td>:</td><td><h4><a TARGET="_blank" href="https://github.com/GaneshKandu/Palette/issues/new"><?php echo $tpl['lang']['Issues']; ?></a></h4></td></tr>
 <tr><td><h4><?php echo $tpl['lang']['Developed_By']; ?></h4></td><td>:</td><td><h4>Ganesh Kandu</h4></td></tr>
