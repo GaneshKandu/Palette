@@ -15,7 +15,7 @@ Contact Mail : kanduganesh@gmail.com
 			$lf = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
 		}
 	}else{
-		$lf = LANG;
+		$lf = "en";
 	}
 
 	if(file_exists("lang/".$lf.".php")){

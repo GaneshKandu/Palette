@@ -155,7 +155,7 @@ Contact Mail : kanduganesh@gmail.com
 				?>');"><a href="javascript:void(0);"><span class="mif-floppy-disk"></span></a></button>
 			</div>
 			<div class="toolbar-section">
-				<a href="<?php echo $tpl['project']['url']; ?>" target="_blank" ><button class="button"><?php echo $tpl['lang']['Preview']; ?></button></a>
+				<a href="<?php echo $tpl['project']['url']; ?>" target="_new" ><button class="button"><?php echo $tpl['lang']['Preview']; ?></button></a>
 			</div>
 			<div class="toolbar-section">
 				<a href="<?php echo $tpl['project']['dashurl']; ?>" ><button class="button"><?php echo $tpl['lang']['Dashboard']; ?></button></a>
