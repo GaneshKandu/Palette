@@ -6,7 +6,7 @@
 
 # Palette
 
-Palette is PHP Based Small Site Builder
+Palette is a freehand CMS which allows to construct websites directly in a web-browser. It uses flat files for storage and provides an intuitive GUI
 
 # Getting Started
 
