@@ -2,7 +2,7 @@
 [![GitHub Issues](https://img.shields.io/github/issues/GaneshKandu/Palette.svg)](https://github.com/GaneshKandu/Palette/issues) 
 [![Releases](https://img.shields.io/github/release/GaneshKandu/Palette.svg)](https://github.com/GaneshKandu/Palette/releases) 
 
-###Palette is PHP Based Site Builder
+### Palette is a freehand CMS which allows to construct websites directly in a web-browser. It uses flat files for storage and provides an intuitive GUI
 
 # Palette
 
