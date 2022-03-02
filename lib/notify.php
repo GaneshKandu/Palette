@@ -29,7 +29,7 @@ class notify{
 			$flag = true;
 			foreach($msg as $key => $value){
 				if(!$flag){echo ",";}else{$flag = false;}
-				echo $key.":'".$value."'";
+				echo $key.":'".addslashes($value)."'";
 			}
 			echo "});";
 			echo "$.get(\"".URL."/popup\",function(data, status){});";

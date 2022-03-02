@@ -1,5 +1,10 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteRule ^(.*)$ install.php [QSA,L]
+	RewriteEngine On
+	Options -Indexes
+	RewriteBase /Palette/
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-l
+	RewriteCond %{REQUEST_URI} !\.(js|css|jpeg|gif|png|bmp|ico)$ [NC]
+	RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
 </IfModule>
